@@ -1,0 +1,41 @@
+{
+  "name": "isq-js",
+  "description": "International System of Quantities, ISO-80000",
+  "author": {
+    "name": "Richard Schneider",
+    "email": "makaretu@gmail.com"
+  },
+  "version": "0.3.0",
+  "license": "MIT",
+  "homepage": "https://richardschneider.github/isq",
+  "bugs": "https://github.com/richardschneider/isq/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/richardschneider/isq"
+  },
+  "main": "./lib/isq.js",
+  "bin": {
+    "isq": "./bin/isq"
+  },
+  "scripts": {
+    "start": "./bin/isq --help",
+    "test": "mocha",
+    "ci": "gulp"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-bump": "^0.1.11",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-jscs": "^1.1.2",
+    "gulp-jshint": "^1.8.4",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-spawn-mocha": "^2.2.1",
+    "gulp-util": "^3.0.1",
+    "jshint-stylish": "^0.4.0",
+    "mocha": "*",
+    "should": "^4.0.4"
+  }
+}
