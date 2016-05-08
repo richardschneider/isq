@@ -40,5 +40,10 @@ describe('SI Number', () => {
         SI.parse('.2').should.be.NaN;
     });
 
+    it('should allow comma and dot as the decimal marker', () => {
+        SI.parse('0.2').should.be.exactly(0.2);
+        SI.parse('0,2').should.be.exactly(0.2);
+    });
+
 });
 
