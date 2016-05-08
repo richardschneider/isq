@@ -43,5 +43,10 @@ describe('SI Number', () => {
         SI.parse('0,2').should.be.exactly(0.2);
     });
 
+    it('should allow multiplication', () => {
+        SI.parse('25 × 60.5').should.be.exactly(1512.5);
+        SI.parse('25 × a').should.be.NaN;
+    });
+
 });
 
