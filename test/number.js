@@ -48,5 +48,16 @@ describe('SI Number', () => {
         SI.parse('25 × a').should.be.NaN;
     });
 
+    it('should allow an exponent', () => {
+        SI.parse('10¹⁰').should.be.exactly(10000000000);
+        SI.parse('10⁴').should.be.exactly(10000);
+        SI.parse('10³').should.be.exactly(1000);
+        SI.parse('10²').should.be.exactly(100);
+        SI.parse('10¹').should.be.exactly(10);
+        SI.parse('10⁰').should.be.exactly(1);
+        SI.parse('10⁻³').should.be.exactly(0.001);
+        SI.parse('10⁻').should.be.NaN;
+    });
+
 });
 
