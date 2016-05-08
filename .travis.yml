@@ -1,0 +1,10 @@
+language: node_js
+env: CI=true
+node_js:
+  - stable
+before_script:
+  - npm install -g gulp
+script:
+  - gulp
+  - pkg=$(npm pack)
+  - npm install -g $pkg
