@@ -17,13 +17,11 @@ describe('SI Number', () => {
             .and.a.Number;
     });
 
-    it('should ignore spaces', () => {
-        SI.parse('12 345')
-            .should.be.exactly(12345)
-            .and.a.Number;
-        SI.parse('-12 345.123 456')
-            .should.be.exactly(-12345.123456)
-            .and.a.Number;
+    it('should allow grouping of digits with (thin) spaces', () => {
+        SI.parse('-12 345.123 456').should.be.exactly(-12345.123456);
+        SI.parse('-12\u0020345.123\u0020456').should.be.exactly(-12345.123456); // space
+        SI.parse('-12\u00A0345.123\u00A0456').should.be.exactly(-12345.123456); // no break space
+        SI.parse('-12\u2009345.123\u2009456').should.be.exactly(-12345.123456); // thin space
     });
 
     it('can be a percentage', () => {
