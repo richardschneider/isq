@@ -35,5 +35,10 @@ describe('SI Number', () => {
             .and.a.Number;
     });
 
+    it('should preceed the decimal marker with a space', () => {
+        SI.parse('0.2').should.be.a.Number;
+        SI.parse('.2').should.be.NaN;
+    });
+
 });
 
