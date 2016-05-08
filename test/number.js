@@ -17,6 +17,23 @@ describe('SI Number', () => {
             .and.a.Number;
     });
 
+    it('should ignore spaces', () => {
+        SI.parse('12 345')
+            .should.be.exactly(12345)
+            .and.a.Number;
+        SI.parse('-12 345.123 456')
+            .should.be.exactly(-12345.123456)
+            .and.a.Number;
+    });
+
+    it('can be a percentage', () => {
+        SI.parse('10 %')
+            .should.be.exactly(0.1)
+            .and.a.Number;
+        SI.parse('0.25 %')
+            .should.be.exactly(0.0025)
+            .and.a.Number;
+    });
 
 });
 
