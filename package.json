@@ -1,5 +1,5 @@
 {
-  "name": "isq-js",
+  "name": "isq",
   "description": "International System of Quantities, ISO-80000",
   "author": {
     "name": "Richard Schneider",
@@ -14,11 +14,7 @@
     "url": "git://github.com/richardschneider/isq"
   },
   "main": "./lib/isq.js",
-  "bin": {
-    "isq": "./bin/isq"
-  },
   "scripts": {
-    "start": "./bin/isq --help",
     "test": "mocha",
     "ci": "gulp"
   },

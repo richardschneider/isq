@@ -13,4 +13,4 @@ Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 # License
 The [MIT license](LICENSE).
 
-Copyright © 2015-2016 Richard Schneider [(makaretu@gmail.com)](mailto:makaretu@gmail.com)
+Copyright © 2015-2016 Richard Schneider [(makaretu@gmail.com)](mailto:makaretu@gmail.com?subject=ISQ)
