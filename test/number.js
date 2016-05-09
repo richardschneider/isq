@@ -48,7 +48,7 @@ describe('SI Number', () => {
         SI.parse('25 × a').should.be.NaN;
     });
 
-    it('should allow an exponent', () => {
+    it('should allow an UNICODE exponent, e.g. 10⁻³', () => {
         SI.parse('10¹⁰').should.be.exactly(10000000000);
         SI.parse('10⁴').should.be.exactly(10000);
         SI.parse('10³').should.be.exactly(1000);
@@ -57,6 +57,34 @@ describe('SI Number', () => {
         SI.parse('10⁰').should.be.exactly(1);
         SI.parse('10⁻³').should.be.exactly(0.001);
         SI.parse('10⁻').should.be.NaN;
+    });
+
+    it('should allow an ASCII Math exponent, e.g. 10^-3', () => {
+        SI.parse('10^10').should.be.exactly(10000000000);
+        SI.parse('10^4').should.be.exactly(10000);
+        SI.parse('10^3').should.be.exactly(1000);
+        SI.parse('10^2').should.be.exactly(100);
+        SI.parse('10^1').should.be.exactly(10);
+        SI.parse('10^0').should.be.exactly(1);
+        SI.parse('10^-3').should.be.exactly(0.001);
+        SI.parse('10^+3').should.be.exactly(1000);
+        SI.parse('10^').should.be.NaN;
+        SI.parse('10^-').should.be.NaN;
+        SI.parse('10^+').should.be.NaN;
+    });
+
+    it('should allow a Fortran exponent, e.g. 10^-3', () => {
+        SI.parse('10**10').should.be.exactly(10000000000);
+        SI.parse('10**4').should.be.exactly(10000);
+        SI.parse('10**3').should.be.exactly(1000);
+        SI.parse('10**2').should.be.exactly(100);
+        SI.parse('10**1').should.be.exactly(10);
+        SI.parse('10**0').should.be.exactly(1);
+        SI.parse('10**-3').should.be.exactly(0.001);
+        SI.parse('10**+3').should.be.exactly(1000);
+        SI.parse('10**').should.be.NaN;
+        SI.parse('10**-').should.be.NaN;
+        SI.parse('10**+').should.be.NaN;
     });
 
     it('should allow uncertainty', () => {
