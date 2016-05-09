@@ -59,5 +59,15 @@ describe('SI Number', () => {
         SI.parse('10⁻').should.be.NaN;
     });
 
+    it('should allow uncertainty', () => {
+        // console.log('x', SI.parse('1.674 927 28(29) × 10⁻²⁷'));
+        SI.parse('1.2345(23)').should.be.exactly(1.2345);
+        SI.parse('1.2345(23)').uncertainty.should.be.exactly(0.0023);
+        SI.parse('1.674 927 28(29)').should.be.exactly(1.67492728);
+        SI.parse('1.674 927 28(29)').uncertainty.should.be.exactly(0.00000029);
+        // TODO: SI.parse('1.674 927 28(29) × 10⁻²⁷').should.be.equal(1.67492728e-27);
+        // TODO: SI.parse('1.674 927 28(29) × 10⁻²⁷').uncertainty.should.be.exactly(0.00000029e-27);
+    });
+
 });
 
