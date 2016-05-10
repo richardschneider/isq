@@ -87,6 +87,21 @@ describe('SI Number', () => {
         SI.parse('10**+').should.be.NaN;
     });
 
+    it('should allow exponential notation, e.g. 10e-3', () => {
+        SI.parse('1E10').should.be.exactly(10000000000);
+        SI.parse('1e10').should.be.exactly(10000000000);
+        SI.parse('1e4').should.be.exactly(10000);
+        SI.parse('1e3').should.be.exactly(1000);
+        SI.parse('1e2').should.be.exactly(100);
+        SI.parse('1e1').should.be.exactly(10);
+        SI.parse('1e0').should.be.exactly(1);
+        SI.parse('1e-3').should.be.exactly(0.001);
+        SI.parse('1e+3').should.be.exactly(1000);
+        SI.parse('1e').should.be.NaN;
+        SI.parse('1e-').should.be.NaN;
+        SI.parse('1e+').should.be.NaN;
+    });
+
     it('should allow uncertainty', () => {
         // console.log('x', SI.parse('1.674 927 28(29) × 10⁻²⁷'));
         SI.parse('1.2345(23)').should.be.exactly(1.2345);
