@@ -23,7 +23,7 @@ describe('Uncertain Number', () => {
         new UncertainNumber(123.0).isUncertain().should.be.false;
         new UncertainNumber(123.0, 0.0).isUncertain().should.be.false;
         new UncertainNumber(123.0, 0.1).isUncertain().should.be.true;
-});
+    });
 
 });
 
