@@ -104,11 +104,10 @@ describe('SI Number', () => {
     });
 
     it('should allow uncertainty', () => {
-        SI.parse('1.2345(23)').should.have.property('uncertainty', 0.0023);
-        SI.parse('1.674 927 28(29)').should.have.property('uncertainty', 0.00000029);
-        SI.parse('1.674 927 28(29) × 10⁻²⁷')
-                .should.have.property('uncertainty')
-                .and.be.approximately(0.00000029e-27, 0.000000001e-27);
+        SI.parse('1.2345(23)').should.have.property('uncertainty');
+        SI.parse('1.2345(23)').uncertainty.should.equal(0.0023);
+        SI.parse('1.674 927 28(29)').uncertainty.should.equal(0.00000029);
+        SI.parse('1.674 927 28(29) × 10⁻²⁷').uncertainty.should.be.approximately(0.00000029e-27, 0.000000001e-27);
     });
 
 });
