@@ -37,4 +37,7 @@ describe('SI Number using big.js', () => {
         SI.parse('1.674 927 28(29) × 10⁻²⁷').uncertainty.eq(0.00000029e-27).should.be.true;
     });
 
+    it('should be human readable', () => {
+        SI.parse('1.2345(23)').toString().should.equal('1.2345 ± 0.0023');
+    });
 });

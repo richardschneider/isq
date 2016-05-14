@@ -31,6 +31,10 @@ describe('Uncertain Number', () => {
             length = x1.plus(x2);
         length.should.have.property('value').and.be.approximately(23.7, 0.01);
         length.should.have.property('uncertainty').and.be.approximately(0.36, 0.001);
+
+        length = x1.plus(14.4);
+        length.should.have.property('value').and.be.approximately(23.7, 0.01);
+        length.should.have.property('uncertainty').and.be.equal(0.2);
     });
 
     it('should subtract and propagate uncertainty', () => {
