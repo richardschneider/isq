@@ -45,6 +45,7 @@ describe('SI Number', () => {
 
     it('should allow multiplication', () => {
         SI.parse('25 × 60.5').should.be.exactly(1512.5);
+        SI.parse('25 × 6.05 × 10¹').should.be.exactly(1512.5);
         SI.parse('25 × a').should.be.NaN;
     });
 
@@ -103,10 +104,11 @@ describe('SI Number', () => {
     });
 
     it('should allow uncertainty', () => {
-        // console.log('x', SI.parse('1.674 927 28(29) × 10⁻²⁷'));
         SI.parse('1.2345(23)').should.have.property('uncertainty', 0.0023);
         SI.parse('1.674 927 28(29)').should.have.property('uncertainty', 0.00000029);
-        // TODO: SI.parse('1.674 927 28(29) × 10⁻²⁷').should.have.property('uncertainty', 0.00000029e-27);
+        SI.parse('1.674 927 28(29) × 10⁻²⁷')
+                .should.have.property('uncertainty')
+                .and.be.approximately(0.00000029e-27, 0.000000001e-27);
     });
 
 });

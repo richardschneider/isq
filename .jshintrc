@@ -11,5 +11,6 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
+  "laxbreak": true,
   "node": true
 }
