@@ -21,4 +21,11 @@ describe('SI', () => {
         SI.Number(1.23456, '0.00078').uncertainty.valueOf().should.equal(0.00078);
         SI.Number(1.23456, '7.8 × 10^-4').uncertainty.valueOf().should.equal(0.00078);
     });
+
+    it('should return NaN for an invalid Number', () => {
+        SI.Number('a').should.be.NaN;
+        SI.Number('a', 1).should.be.NaN;
+        SI.Number(1, 'a').should.be.NaN;
+        SI.Number(1, 2, 3).should.be.NaN;
+    });
 });
