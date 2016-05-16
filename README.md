@@ -7,6 +7,7 @@ The latest documentation can be read at [Read the Docs](http://isq.readthedocs.o
 ### Features
 * Uncertainty - `SI.Number('123.456(4)')`
 * SI notation - `SI.Number('1.234 56(4) × 10²')`
+* ASCII notation - `SI.Number('1.234 56(4) x 10^2')`
 * Plugable arbitrary-precision decimal and non-decimal arithmetic - `SI.config.Number = require('BigNumber')`
 
 ## Getting started [![npm version](https://badge.fury.io/js/isq.svg)](https://badge.fury.io/js/isq)
