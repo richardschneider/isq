@@ -1,7 +1,11 @@
 'use strict';
 
-var should = require('should');
-var UncertainNumber = require('../lib/UncertainNumber');
+var should = require('should'),
+    math = require('../lib/math'),
+    UncertainNumber = require('../lib/UncertainNumber');
+
+math.applyNames(Number);
+math.applyNames(UncertainNumber);
 
 describe('Uncertain Number', () => {
     it('should have a value and an uncertainty', () => {
@@ -74,6 +78,16 @@ describe('Uncertain Number', () => {
             f = T.pow(-1);
         f.should.have.property('value').and.be.approximately(5, 0.1);
         f.should.have.property('uncertainty').and.be.approximately(0.25, 0.001);
+    });
+
+    it('should compare with uncertainty', () => {
+        let a = new UncertainNumber(1, 0.1);
+        a.cmp(a).should.equal(0);
+        a.cmp(0.8).should.equal(1);
+        a.cmp(0.9).should.equal(0);
+        a.cmp(1.0).should.equal(0);
+        a.cmp(1.09).should.equal(0); // precision errrors, can't use 1.1
+        a.cmp(1.2).should.equal(-1);
     });
 
 });

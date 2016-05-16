@@ -55,6 +55,22 @@ describe('SI Number using big.js', () => {
         area.uncertainty.toFixed(1).should.be.equal('0.4');
     });
 
+    it('should compare with uncertainty', () => {
+        let a = SI.Number(1, 0.1);
+        a.cmp(a).should.equal(0);
+        a.cmp(0.8).should.equal(1);
+        a.cmp(0.9).should.equal(0);
+        a.cmp(1.0).should.equal(0);
+        a.cmp(1.1).should.equal(0);
+        a.cmp(1.2).should.equal(-1);
+
+        a.cmp(SI.Number(0.8)).should.equal(1);
+        a.cmp(SI.Number(0.9)).should.equal(0);
+        a.cmp(SI.Number(1.0)).should.equal(0);
+        a.cmp(SI.Number(1.1)).should.equal(0);
+        a.cmp(SI.Number(1.2)).should.equal(-1);
+});
+
     it('should be human readable', () => {
         SI.Number('1.2345(23)').toString().should.equal('1.2345 ± 0.0023');
     });

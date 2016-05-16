@@ -22,7 +22,7 @@ function createNumber() {
 }
 
 function isUncertain(v) {
-    return (v.uncertainty || 0) !== 0;
+    return (v.uncertainty || 0).ne(0);
 }
 
 module.exports = {
