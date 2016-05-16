@@ -28,4 +28,12 @@ describe('SI', () => {
         SI.Number(1, 'a').should.be.NaN;
         SI.Number(1, 2, 3).should.be.NaN;
     });
+
+    it('should allow test for uncertainty', () => {
+        SI.isUncertain(123.0).should.be.false;
+        SI.isUncertain(123.0, 0.0).should.be.false;
+        SI.isUncertain(123.0, 0.1).should.be.test;
+    });
+
+
 });

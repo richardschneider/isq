@@ -1,19 +1,17 @@
 'use strict';
 
 let should = require('should'),
-    SI = require('../lib/number');
+    SI = require('..');
 
 describe('Number', () => {
     it('should be exact and not be uncertain', () => {
-        let f = 123.0;
-        f.isExact().should.be.true;
-        f.isUncertain().should.be.false;
-        let i = 123;
-        i.isExact().should.be.true;
-        i.isUncertain().should.be.false;
+        SI.isUncertain(123).should.be.false;
+        SI.isUncertain(123.45).should.be.false;
     });
 
     it('should allow named operators', () => {
+        SI.config.Number.should.equal(Number);
+
         let a = 2, b = 3, c = -2;
         a.plus(b).should.equal(5);
         a.minus(b).should.equal(-1);

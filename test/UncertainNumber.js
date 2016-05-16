@@ -15,16 +15,6 @@ describe('Uncertain Number', () => {
         n.should.equal(3.23);
     });
 
-    it('should be exact when uncertainty is undefined or zero', () => {
-        new UncertainNumber(123.0).isExact().should.be.true;
-        new UncertainNumber(123.0, 0.0).isExact().should.be.true;
-        new UncertainNumber(123.0, 0.1).isExact().should.be.false;
-
-        new UncertainNumber(123.0).isUncertain().should.be.false;
-        new UncertainNumber(123.0, 0.0).isUncertain().should.be.false;
-        new UncertainNumber(123.0, 0.1).isUncertain().should.be.true;
-    });
-
     it('should add and propagate uncertainty', () => {
         let x1 = new UncertainNumber(9.3, 0.2),
             x2 = new UncertainNumber(14.4, 0.3),

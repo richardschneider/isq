@@ -23,5 +23,6 @@ function createNumber() {
 
 module.exports = {
     Number: createNumber,
-    config: config
+    config: config,
+    isUncertain: v => (v.uncertainty || 0) !== 0
 };
