@@ -32,7 +32,7 @@ describe('SI', () => {
     it('should allow test for uncertainty', () => {
         SI.isUncertain(123.0).should.be.false;
         SI.isUncertain(123.0, 0.0).should.be.false;
-        SI.isUncertain(123.0, 0.1).should.be.test;
+        SI.isUncertain(123.0, 0.1).should.be.true;
     });
 
 

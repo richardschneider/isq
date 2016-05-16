@@ -21,8 +21,12 @@ function createNumber() {
     return NaN;
 }
 
+function isUncertain(v) {
+    return (v.uncertainty || 0) !== 0;
+}
+
 module.exports = {
     Number: createNumber,
     config: config,
-    isUncertain: v => (v.uncertainty || 0) !== 0
+    isUncertain: isUncertain,
 };
