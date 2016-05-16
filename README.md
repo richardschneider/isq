@@ -29,7 +29,7 @@ Create a number with [SI.Number()]()
         c = SI.Number('0.03(1)'), // 0.03±0.01
         d = SI.Number(0.03, 0.01); // same as c
 
-Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/number/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
+Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
     var c = a.pow(2).plus(b.pow(2)).sqrt()
 
