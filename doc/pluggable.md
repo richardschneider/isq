@@ -1,4 +1,4 @@
- A pluggable architecture increases flexibility and extensibility. ISQ is extended to use other packages with the [`SI.config`](api/SI#config) object.
+ A pluggable architecture increases flexibility and extensibility. ISQ is extended to use other packages with the [SI.config](api/SI#config) object.
  
  ## Numbers
  
