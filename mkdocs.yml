@@ -2,3 +2,8 @@ site_name: isq
 site_author: Richard Schneider <makaretu@gmail.com>
 markdown_extensions:
   - admonition
+pages:
+- Home: index.md
+- Getting Started: gettingStarted.md
+- Math: math.md
+- Resources: bibligraphy.md

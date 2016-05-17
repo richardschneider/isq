@@ -1,5 +1,3 @@
-# Getting Started
-
 ### Prerequisites
 
 You'll need to have the following software installed:
@@ -17,12 +15,12 @@ The [big.js](https://www.npmjs.com/package/big.js) package is recommended for ar
     
 ### Usage
 
-````
-> node
-SI = require('isq')
-SI.config.Number = require('big.js')
+Determine the length of a line when the starting and ending points are uncertain.
 
-let a = SI.Number('1.2(2)'),   // 1.2±0.2
-    b = SI.Number('1.3(3)'),   // 1.3±0.3
-    length = a.plus(b);        // 2.5±0.4
-````
+    > node
+    SI = require('isq')
+    SI.config.Number = require('big.js')
+
+    let a = SI.Number('1.2(2)'),   // 1.2±0.2
+        b = SI.Number('1.3(3)'),   // 1.3±0.3
+        length = a.plus(b);        // 2.5±0.4

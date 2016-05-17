@@ -1,8 +1,8 @@
-## Math
-
 Javascript does not allow overiding of operators, so named methods are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is calculated as:
 
     var c = a.pow(2).plus(b.pow(2)).sqrt()
+
+## Methods
 
 The table below contains:
 
@@ -27,7 +27,7 @@ lte | <= | lessThanOrEqual
 gte | >= | greaterThanOrEqual
 cmp | *see below* | compare or comparesTo
 
-### Comparision
+## Comparision
 
 `cmp` compares two numbers and returns a value (-1, 0 or 1) that indicates whether the first number is less than, equal to, or greater than the second number.  
 
