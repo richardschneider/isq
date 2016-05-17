@@ -69,7 +69,7 @@ describe('SI Number using big.js', () => {
         a.cmp(SI.Number(1.0)).should.equal(0);
         a.cmp(SI.Number(1.1)).should.equal(0);
         a.cmp(SI.Number(1.2)).should.equal(-1);
-});
+    });
 
     it('should be human readable', () => {
         SI.Number('1.2345(23)').toString().should.equal('1.2345 ± 0.0023');

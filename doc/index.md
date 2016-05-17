@@ -6,7 +6,7 @@ ISQ is a open source javascript implementation of ISO-80000 *International Syste
 Check out [Getting Started](gettingStarted) for instructions on how to quickly set up and use ISQ.
 
 ### Features
-* Uncertainty
+* [Uncertainty](uncertainty.md)
 * SI notation
 * ASCII notation
 * Plugable architecture

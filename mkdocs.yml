@@ -6,4 +6,5 @@ pages:
 - Home: index.md
 - Getting Started: gettingStarted.md
 - Math: math.md
+- Uncertainty: uncertainty.md
 - Resources: resources.md
