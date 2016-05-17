@@ -35,7 +35,7 @@ Javascript does not allow overiding of operators, so [named methods](http://isq.
 
 # Rounding errors
 
-Rounding and precision errors are [notorious](http://modernweb.com/2014/02/17/what-every-javascript-developer-should-know-about-floating-points/) in Javascript. For example `0.3 - 0.1` produces `0.19999999999999998` and NOT `0.2`. ISQ can be [configured](isq.rtfd.io/en/latest/pluggable) to use a 'big number' package that avoids these issues.
+Rounding and precision errors are [notorious](http://modernweb.com/2014/02/17/what-every-javascript-developer-should-know-about-floating-points/) in Javascript. For example `0.3 - 0.1` produces `0.19999999999999998` and NOT `0.2`. ISQ can be [configured](http://isq.rtfd.io/en/latest/pluggable) to use a 'big number' package that avoids these issues.
 
     SI.config.Number = require('big.js');
     SI.Number(0.3).minus(SI.Number(0.1)) // 0.2
