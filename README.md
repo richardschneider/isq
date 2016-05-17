@@ -22,7 +22,7 @@ Include the package
 
     var SI = require('isq')
 
-Create a number with [SI.Number()]()
+Create a number with [SI.Number](http://isq.rtfd.io/en/latest/api/SI#Number)
 
     var a = SI.Number(0.3),
         b = SI.Number('0.1'),
@@ -35,12 +35,20 @@ Javascript does not allow overiding of operators, so [named methods](http://isq.
 
 # Rounding errors
 
-Rounding and precision errors are [notorious](http://modernweb.com/2014/02/17/what-every-javascript-developer-should-know-about-floating-points/) in Javascript. For example `0.3 - 0.1` produces `0.19999999999999998` and NOT `0.2`. ISQ can be [configured]() to use a 'big number' package that avoids these issues.
+Rounding and precision errors are [notorious](http://modernweb.com/2014/02/17/what-every-javascript-developer-should-know-about-floating-points/) in Javascript. For example `0.3 - 0.1` produces `0.19999999999999998` and NOT `0.2`. ISQ can be [configured](isq.rtfd.io/en/latest/pluggable) to use a 'big number' package that avoids these issues.
 
     SI.config.Number = require('big.js');
     SI.Number(0.3).minus(SI.Number(0.1)) // 0.2
 
 # Uncertainty
+
+Uncertainity, or margin of error, describes the imperfect nature of a measurement.  Typically, it is the standard deviation of actual measurements. Anytime a calculation is performed, *propagation of uncertainity* is also performed to determine the uncertainty of the result.
+
+    let a = SI.Number('1.2(2)'),   // 1.2±0.2
+        b = SI.Number('1.3(3)'),   // 1.3±0.3
+        length = a.plus(b);        // 2.5±0.4
+
+When comparing uncertain number, the uncertainity of both values is taken into consideration. Equality *Is the difference of the two values within the resulting uncertainty?* 
 
 # License
 The [MIT license](LICENSE).

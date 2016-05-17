@@ -1,4 +1,4 @@
- A pluggable architecture increases flexibility and extensibility. ISQ is extended to use other packages with the `SI.config` object.
+ A pluggable architecture increases flexibility and extensibility. The [factory design pattern](https://en.wikipedia.org/wiki/Factory_method_pattern) is used to allow creating an object without having to specify its type/class. ISQ is [extended](https://en.wikipedia.org/wiki/Extensibility) to use other packages with the `SI.config` object.
  
  Numbers
  -------
