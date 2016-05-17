@@ -23,7 +23,7 @@ Anytime a [calculation](math) is performed, *propagation of uncertainity* is als
 
 Equality requires taking the uncertainity of both values into consideration.
 
-ISQ defines equality as *is the difference of the two values within the resulting uncertainty*. 
+ISQ defines equality as *Is the difference of the two values within the resulting uncertainty?* 
 
     function equals(a, b) {
         let D = a.minus(b);

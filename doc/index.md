@@ -9,5 +9,5 @@ Check out [Getting Started](gettingStarted) for instructions on how to quickly s
 * [Uncertainty](uncertainty.md)
 * SI notation
 * ASCII notation
-* Plugable architecture
+* [Pluggable architecture](pluggable.md)
 

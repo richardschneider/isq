@@ -7,4 +7,5 @@ pages:
 - Getting Started: gettingStarted.md
 - Math: math.md
 - Uncertainty: uncertainty.md
+- Configuration:  pluggable.md
 - Resources: resources.md
