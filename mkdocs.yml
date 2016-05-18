@@ -5,6 +5,7 @@ markdown_extensions:
 pages:
 - Home: index.md
 - Getting Started: gettingStarted.md
+- Notation: notation.md
 - Math: math.md
 - Uncertainty: uncertainty.md
 - Configuration:  pluggable.md
