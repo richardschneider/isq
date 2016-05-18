@@ -1,5 +1,5 @@
 
-## SI Number
+### SI Number
 
 A basic SI number is a float, such as '12345.67891'.
 
@@ -13,6 +13,14 @@ A [precentage](https://en.wikipedia.org/wiki/Percentage) is specified with the [
 
 An [uncertain value](uncertainty) is specified with the [left parenthesis]() and [right parenthesis]() symbols, such as '12 345.678 91(5)' and is equivalent to `12345.67891±0.00005`.
 
-[Multiplication](https://en.wikipedia.org/wiki/Multiplication) is specified with the [multication sign](http://graphemica.com/%C3%97), such as '1.234 567 891(5) × 10⁴' and is equivalent to `12345.67891±0.00005`.
+[Multiplication](https://en.wikipedia.org/wiki/Multiplication) is specified with the [multiplication sign](http://graphemica.com/%C3%97), such as '1.234 567 891(5) × 10⁴' and is equivalent to `12345.67891±0.00005`.
 
-## Quantity
+### ASCII Number
+
+The SI representation of a number requires [Unicode code points](http://www.joelonsoftware.com/articles/Unicode.html) outside of the [ASCII characters](https://en.wikipedia.org/wiki/ASCII).  To make life easier for programmers the following relaxations are allowed:
+
+* Any white space character can be used for a [thin space]()
+* 'x' can be used for a [multiplication sign]()
+* '^' or '**' can be use for [exponentiation](https://en.wikipedia.org/wiki/Exponentiation)
+
+For example, '1.234 567 891(5) x 10**4' is equivalent to `12345.67891±0.00005`
