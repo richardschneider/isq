@@ -2,9 +2,10 @@
 
 A javascript implementation of the International System of Quantities, ISO-80000.
 
-The latest documentation can be read at [Read the Docs](http://isq.readthedocs.org/en/latest/)
+The latest documentation can be read at [Read the Docs](http://isq.readthedocs.org/en/latest/).
 
 ### Features
+
 * Uncertainty - `SI.Number('123.456(4)')`
 * SI notation - `SI.Number('1.234 56(4) × 10²')`
 * ASCII notation - `SI.Number('1.234 56(4) x 10^2')`

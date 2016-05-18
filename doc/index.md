@@ -7,7 +7,6 @@ Check out [Getting Started](gettingStarted) for instructions on how to quickly s
 
 ### Features
 * [Uncertainty](uncertainty.md)
-* SI notation
-* ASCII notation
+* [SI and ASCII notation](notation.md)
 * [Pluggable architecture](pluggable.md)
 
