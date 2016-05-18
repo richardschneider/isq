@@ -35,5 +35,10 @@ describe('SI', () => {
         SI.isUncertain(SI.Number(123.0, 0.1)).should.be.true;
     });
 
+    it('should create a Quantity from a string', () => {
+        let Q = SI.Quantity('1.234 56(1) m/s');
+        Q.should.have.property('number');
+        Q.should.have.property('unit', 'm/s');
+    });
 
 });

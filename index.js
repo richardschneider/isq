@@ -21,12 +21,17 @@ function createNumber() {
     return NaN;
 }
 
+function createQuantity(s) {
+    return new config.Quantity(s);
+}
+
 function isUncertain(v) {
     return (v.uncertainty || 0).ne(0);
 }
 
 module.exports = {
     Number: createNumber,
+    Quantity: createQuantity,
     config: config,
     isUncertain: isUncertain,
 };
