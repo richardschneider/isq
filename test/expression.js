@@ -1,7 +1,7 @@
 'use strict';
 
 let should = require('should'),
-    Expression = require('../lib/Expression');
+    Expression = require('../lib/expression');
 
 describe('Expression', () => {
     it('should be representated as an AST (Abstract Syntax Tree)', () => {
