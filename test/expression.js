@@ -23,6 +23,10 @@ describe('Expression', () => {
         new Expression('a⋅b').toString().should.equal(new Expression('a*b').toString());
     });
 
+    it('should allow space for multiplication', () => {
+        new Expression('m kg s⁻²').should.eql(new Expression('m × kg × s^-2'));
+    });
+
     it('should allow unicode numeric superscripts as exponents', () => {
         new Expression('a^33 + b^2').should.eql(new Expression('a³³ + b²'));
         new Expression('a^-3 + b^-2').should.eql(new Expression('a⁻³ + b⁻²'));
