@@ -41,4 +41,9 @@ describe('SI', () => {
         Q.should.have.property('unit', 'm/s');
     });
 
+    it('should have predefined units', () => {
+        SI.units.should.have.property('m');
+        SI.units.should.have.property('Pa');
+    });
+
 });
