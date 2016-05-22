@@ -8,20 +8,36 @@ describe('Expression', () => {
         new Expression('a + b + c').should.have.property('ast');
     });
 
-    it('should convert to a string', () => {
-        let a = new Expression('a + b + 1 + -c'),
-            b = a.toString();
+    describe('conversion to a string', () => {
 
-        b.should.be.instanceof(String);
-        a.should.eql(new Expression(b));
-    });
+        it('should return a parseable string', () => {
+            let a = new Expression('a + b + 1 + -c'),
+                b = a.toString();
 
-    it('should convert to a string without redundant parentheses', () => {
-        new Expression('(a + b) + (c^2)').toString().should.equal('a+b+c^2');
-        new Expression('(a + b) / (c^2)').toString().should.equal('(a+b)/c^2');
-        new Expression('(a + b) / (c^(z+n))').toString().should.equal('(a+b)/c^(z+n)');
-        new Expression('(a + (b / (c^2)))').toString().should.equal('a+b/c^2');
-        new Expression('(a + (b / (c^(z+n))))').toString().should.equal('a+b/c^(z+n)');
+            b.should.be.instanceof(String);
+            a.should.eql(new Expression(b));
+        });
+
+        it('should remove redundant parentheses', () => {
+            new Expression('(a + b) + (c^2)').toString().should.equal('a+b+c^2');
+            new Expression('(a + b) / (c^2)').toString().should.equal('(a+b)/c^2');
+            new Expression('(a + b) / (c^(z+n))').toString().should.equal('(a+b)/c^(z+n)');
+            new Expression('(a + (b / (c^2)))').toString().should.equal('a+b/c^2');
+            new Expression('(a + (b / (c^(z+n))))').toString().should.equal('a+b/c^(z+n)');
+        });
+
+        it('should allow different symbols for multiplication', () => {
+           new Expression('a * b').toString({ multiplicationMark: ' '}).should.equal('a b');
+        });
+
+        it('should allow different symbols for an exponent', () => {
+           new Expression('a ^ b').toString({ exponentMark: '**'}).should.equal('a**b');
+        });
+
+        it('should allow unicode superscripts', () => {
+           new Expression('a^-2').toString({ unicodeSuperscript: true }).should.equal('a⁻²');
+        });
+
     });
 
     it("should allow '×' and '⋅' for multiplication", () => {
@@ -74,9 +90,9 @@ describe('Expression', () => {
         defs.b.toString().should.equal('a+a');
     });
 
-    it('should convert to polish and reveser polish notation', () => {
+    it('should convert to polish and reverse polish notation', () => {
         new Expression('(a + b) / (c^(z+n))').toPolish().should.equal('/ + a b ^ c + z n');
-        new Expression('(a + b) / (c^(z+n))').toReversePolish().should.equal('/ + a b ^ c + z n');
+        new Expression('(a + b) / (c^(z+n))').toReversePolish().should.equal('a b + c z n + ^ /');
     });
 
 });
