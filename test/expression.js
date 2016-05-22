@@ -74,4 +74,9 @@ describe('Expression', () => {
         defs.b.toString().should.equal('a+a');
     });
 
+    it('should convert to polish and reveser polish notation', () => {
+        new Expression('(a + b) / (c^(z+n))').toPolish().should.equal('/ + a b ^ c + z n');
+        new Expression('(a + b) / (c^(z+n))').toReversePolish().should.equal('/ + a b ^ c + z n');
+    });
+
 });
