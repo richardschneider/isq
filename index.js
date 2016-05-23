@@ -36,7 +36,7 @@ module.exports = {
     isUncertain: isUncertain,
     get units() {
         if (typeof this._units === 'undefined')
-            this._units = require('./lib/def/units');
+            this._units = config.Quantity.units;
         return this._units;
     },
 
