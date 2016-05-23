@@ -38,7 +38,7 @@ describe('SI', () => {
     it('should create a Quantity from a string', () => {
         let Q = SI.Quantity('1.234 56(1) m/s');
         Q.should.have.property('number');
-        Q.should.have.property('unit', 'm/s');
+        Q.should.have.property('unit');
     });
 
     it('should have predefined units', () => {
