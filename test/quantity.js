@@ -16,6 +16,13 @@ describe('Quantity', () => {
         });
     });
     
+    describe('parsing', () => {
+        it('should throw when symbol is unknown', () => {
+            new Quantity('100 kg').should.have.property('number', 100);
+            (function() { new Quantity('100 kkg'); }).should.throw("Unit 'kkg' is undefined in expression 'kkg'");
+        });
+    });
+
     describe('base unit', () => {
         it('should have a single dimension', () => {
             units.should.have.property('m');
