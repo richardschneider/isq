@@ -103,6 +103,11 @@ describe('Expression', () => {
             new Expression('-a').toReversePolish().should.equal('0 a -');
         });
 
+        it('should allow numeric literals', () => {
+            new Expression('a + 20').toPolish().should.equal('+ a 20');
+            new Expression('a + 20').toReversePolish().should.equal('a 20 +');
+        });
+
     });
 
 
