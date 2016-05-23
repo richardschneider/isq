@@ -35,6 +35,7 @@ describe('Expression', () => {
         });
 
         it('should allow unicode superscripts', () => {
+           new Expression('a^2').toString({ unicodeSuperscript: true }).should.equal('a²');
            new Expression('a^-2').toString({ unicodeSuperscript: true }).should.equal('a⁻²');
         });
 
