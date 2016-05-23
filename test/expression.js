@@ -91,9 +91,19 @@ describe('Expression', () => {
         defs.b.toString().should.equal('a+a');
     });
 
-    it('should convert to polish and reverse polish notation', () => {
-        new Expression('(a + b) / (c^(z+n))').toPolish().should.equal('/ + a b ^ c + z n');
-        new Expression('(a + b) / (c^(z+n))').toReversePolish().should.equal('a b + c z n + ^ /');
+    describe('Polish notation', () => {
+
+        it('should convert to polish and reverse polish notation', () => {
+            new Expression('(a + b) / (c^(z+n))').toPolish().should.equal('/ + a b ^ c + z n');
+            new Expression('(a + b) / (c^(z+n))').toReversePolish().should.equal('a b + c z n + ^ /');
+        });
+
+        it('should treat unary minus as 0 - value', () => {
+            new Expression('-a').toPolish().should.equal('- 0 a');
+            new Expression('-a').toReversePolish().should.equal('0 a -');
+        });
+
     });
+
 
 });
