@@ -8,16 +8,31 @@ describe('Quantity', () => {
     it('should have 7 dimensions', () => {
         Object.keys(Quantity.dimensions).should.have.length(7); 
     });
-       
-    describe('constructor', () => {
-        it('should default the number to 1', () => {
-            new Quantity().should.have.property('number', 1);
-            new Quantity('kg').should.have.property('number', 1);
-        });
+
+    it('should have a number and a unit', () => {
+        let length = new Quantity('5 m');
+        length.should.have.property('number', 5);
+        length.should.have.property('unit', { m: 1});
+    });
+
+    it('should allow exponentiation of a unit', () => {
+        let area = new Quantity('5 m^2');
+        area.should.have.property('number', 5);
+        area.should.have.property('unit', { m: 2});
+    });
+
+    it('should default the number to 1', () => {
+        new Quantity().should.have.property('number', 1);
+        new Quantity('kg').should.have.property('number', 1);
+        new Quantity('kg').should.have.property('unit', { kg: 1});
+    });
+
+    it('should allow multiple units', () => {
+        new Quantity('25 m/s').should.have.property('unit', { m: 1, s: -1});
     });
     
     describe('parsing', () => {
-        it('should throw when symbol is unknown', () => {
+        it('should throw when a symbol is unknown', () => {
             new Quantity('100 kg').should.have.property('number', 100);
             (function() { new Quantity('100 kkg'); }).should.throw("Unit 'kkg' is undefined in expression 'kkg'");
         });
