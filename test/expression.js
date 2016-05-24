@@ -110,5 +110,45 @@ describe('Expression', () => {
 
     });
 
+    describe('Evaluation', () => {
+        it('should return a value', () => {
+            let x = new Expression('(a + b) * -a'),
+                defs = {
+                    a: new Expression('1'),
+                    b: new Expression('a + a')
+                };
+            x
+                .resolve(symbol => defs[symbol])
+                .evaluate()
+                .should.equal(-3);
+        });
+
+        it('should process unary operators', () => {
+            let x = new Expression('+a * -b'),
+                defs = {
+                    a: 1,
+                    b: 2
+                };
+            x
+                .resolve(symbol => defs[symbol])
+                .evaluate()
+                .should.equal(-2);
+        });
+
+        it('should process binary operators', () => {
+            new Expression('1 + 2').evaluate().should.equal(3);
+            new Expression('1 - 2').evaluate().should.equal(-1);
+            new Expression('4 / 2').evaluate().should.equal(2);
+            new Expression('2 * 3').evaluate().should.equal(6);
+            new Expression('2 × 3').evaluate().should.equal(6);
+            new Expression('2 ⋅ 3').evaluate().should.equal(6);
+            new Expression('3^2').evaluate().should.equal(9);
+            new Expression('3**2').evaluate().should.equal(9);
+        });
+
+        it('should throw on unresolved identifier', () => {
+            (function() { new Expression('a').evaluate();} ).should.throw("'a' is undefined");
+        });
+});
 
 });
