@@ -58,4 +58,39 @@ describe('Quantity', () => {
 
     });
         
+    describe('Math', () => {
+        it('should add 2 quantities', () => {
+            let w = new Quantity('5 m').plus(new Quantity('10 m'));
+            w.should.have.property('number', 15);
+            w.should.have.property('unit', { m: 1});
+        });
+
+        it('should only add quantities', () => {
+            units.kg.plus(units.kg).number.should.equal(2);
+            (function() { units.kg.plus(1); }).should.throw("'1' is not a quantity");
+        });
+
+        it('should only add quantities with the same dimensions', () => {
+            units.km.plus(new Quantity('3 cm')).number.should.equal(1000.03);
+            (function() { units.km.plus(units.kg); }).should.throw("Not the same dimensions");
+        });
+
+        it('should subtract 2 quantities', () => {
+            let w = new Quantity('5 m').minus(new Quantity('10 m'));
+            w.should.have.property('number', -5);
+            w.should.have.property('unit', { m: 1});
+        });
+
+        it('should only subtract quantities', () => {
+            units.kg.plus(units.kg).number.should.equal(2);
+            (function() { units.kg.minus(1); }).should.throw("'1' is not a quantity");
+        });
+
+        it('should only subtract quantities with the same dimensions', () => {
+            units.km.minus(new Quantity('1 dam')).number.should.equal(990);
+            (function() { units.km.minus(units.kg); }).should.throw("Not the same dimensions");
+        });
+
+    });
+
 });

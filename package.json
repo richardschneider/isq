@@ -19,6 +19,7 @@
     "ci": "gulp"
   },
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "jsep": "^0.3.0"
   },
   "devDependencies": {
