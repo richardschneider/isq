@@ -71,7 +71,7 @@ describe('Quantity', () => {
         });
 
         it('should only add quantities with the same dimensions', () => {
-            units.km.plus(new Quantity('3 cm')).number.should.equal(1000.03);
+            units.km.plus(new Quantity('3 cm')).number.should.eql(1000.03);
             (function() { units.km.plus(units.kg); }).should.throw("Not the same dimensions");
         });
 
@@ -82,13 +82,36 @@ describe('Quantity', () => {
         });
 
         it('should only subtract quantities', () => {
-            units.kg.plus(units.kg).number.should.equal(2);
+            units.kg.plus(units.kg).number.should.eql(2);
             (function() { units.kg.minus(1); }).should.throw("'1' is not a quantity");
         });
 
         it('should only subtract quantities with the same dimensions', () => {
-            units.km.minus(new Quantity('1 dam')).number.should.equal(990);
+            units.km.minus(new Quantity('1 dam')).number.should.eql(990);
             (function() { units.km.minus(units.kg); }).should.throw("Not the same dimensions");
+        });
+
+        it('should multiply 2 quantities', () => {
+            let volumne = new Quantity('5 kg').times(new Quantity('10 kg'));
+            volumne.should.have.property('number', 50);
+            volumne.should.have.property('unit', { kg: 2});
+        });
+
+        it('should only multiply quantities', () => {
+            units.gram.times(units.gram).unit.should.eql({ kg: 2});
+            units.kg.times(units.kg).unit.should.eql({ kg: 2});
+            (function() { units.kg.times(1); }).should.throw("'1' is not a quantity");
+        });
+
+        it('should divide 2 quantities', () => {
+            let x = new Quantity('10 kg').dividedBy(new Quantity('5 kg'));
+            x.should.have.property('number', 2);
+            x.should.have.property('unit', { kg: 1});
+        });
+
+        it('should only divide quantities', () => {
+            units.metre.dividedBy(units.second).unit.should.eql({m: 1, s: -1});
+            (function() { units.metre.dividedBy(1); }).should.throw("'1' is not a quantity");
         });
 
     });
