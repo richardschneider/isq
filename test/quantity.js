@@ -57,6 +57,15 @@ describe('Quantity', () => {
         });
 
     });
+
+    describe('as a string', () => {
+        it('should be parseable', () => {
+            let entropy0 = new Quantity('10 J/K');
+            let entropy1 = new Quantity(entropy0.toString());
+            entropy0.number.should.eql(entropy1.number);
+            entropy0.unit.should.eql(entropy1.unit);
+        });
+    });
         
     describe('Math', () => {
         it('should add 2 quantities', () => {
