@@ -31,6 +31,17 @@ describe('Quantity', () => {
         new Quantity('25 m/s').should.have.property('unit', { m: 1, s: -1});
     });
     
+    it('should allow dimensionless units', () => {
+        units.rad.should.have.property('number', 1);
+        units.rad.should.have.property('unit', {});
+
+        new Quantity('1').should.have.property('number', 1);
+        new Quantity('1').should.have.property('unit', {});
+
+        new Quantity('m/m').should.have.property('number', 1);
+        new Quantity('m/m').should.have.property('unit', {});
+    });
+
     describe('parsing', () => {
         it('should throw when a symbol is unknown', () => {
             new Quantity('100 kg').should.have.property('number', 100);
@@ -62,8 +73,7 @@ describe('Quantity', () => {
         it('should be parseable', () => {
             let entropy0 = new Quantity('10 J/K');
             let entropy1 = new Quantity(entropy0.toString());
-            entropy0.number.should.eql(entropy1.number);
-            entropy0.unit.should.eql(entropy1.unit);
+            entropy0.should.eql(entropy1);
         });
     });
         
@@ -115,7 +125,7 @@ describe('Quantity', () => {
         it('should divide 2 quantities', () => {
             let x = new Quantity('10 kg').dividedBy(new Quantity('5 kg'));
             x.should.have.property('number', 2);
-            x.should.have.property('unit', { kg: 1});
+            x.should.have.property('unit', {});
         });
 
         it('should only divide quantities', () => {
@@ -123,6 +133,22 @@ describe('Quantity', () => {
             (function() { units.metre.dividedBy(1); }).should.throw("'1' is not a quantity");
         });
 
+    });
+
+    it('should equal another Quantity when the numbers and units are equal', () => {
+        units.km.equals(new Quantity('1000 m')).should.be.true;
+        units.km.equals(new Quantity('2000 m')).should.be.false;
+        units.km.equals(1000).should.be.false;
+    });
+
+    it('should equal another Quantity that is not defined in base units', () => {
+        require('../lib/def/derived').forEach(def => {
+            if (def.other) {
+                console.log('other', def.other);
+                let q = new Quantity(def.other);
+                units[def.name].equals(q).should.be.true;
+            }
+        });
     });
 
 });
