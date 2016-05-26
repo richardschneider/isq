@@ -112,3 +112,17 @@ describe('Number parsing', () => {
 
 });
 
+describe('Number formatting', () =>{
+    it('should return a parseable string', () => {
+        SI.parse(SI.format(10)).should.equal(10);
+    });
+
+    it('should show exponent as a superscript', () => {
+        SI.formatExponent(-1, { unicodeSuperscript: true}).should.equal('⁻¹');
+    });
+
+    it('should allow exponent as ASCII', () => {
+        SI.formatExponent(-1, { exponentMark: '**'}).should.equal('**-1');
+    });
+});
+
