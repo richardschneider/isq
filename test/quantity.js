@@ -116,10 +116,10 @@ describe('Quantity', () => {
             volumne.should.have.property('unit', { kg: 2});
         });
 
-        it('should only multiply quantities', () => {
-            units.gram.times(units.gram).unit.should.eql({ kg: 2});
-            units.kg.times(units.kg).unit.should.eql({ kg: 2});
-            (function() { units.kg.times(1); }).should.throw("'1' is not a quantity");
+        it('should multiply a quantity and a number', () => {
+            let height = units.metre.times(10);
+            height.should.have.property('number', 10);
+            height.should.have.property('unit', { m: 1});
         });
 
         it('should divide 2 quantities', () => {
@@ -128,9 +128,10 @@ describe('Quantity', () => {
             x.should.have.property('unit', {});
         });
 
-        it('should only divide quantities', () => {
-            units.metre.dividedBy(units.second).unit.should.eql({m: 1, s: -1});
-            (function() { units.metre.dividedBy(1); }).should.throw("'1' is not a quantity");
+        it('should divide a quantity by a number', () => {
+            let height = units.metre.times(10).dividedBy(2);
+            height.should.have.property('number', 5);
+            height.should.have.property('unit', { m: 1});
         });
 
     });
@@ -144,7 +145,6 @@ describe('Quantity', () => {
     it('should equal another Quantity that is not defined in base units', () => {
         require('../lib/def/derived').forEach(def => {
             if (def.other) {
-                console.log('other', def.other);
                 let q = new Quantity(def.other);
                 units[def.name].equals(q).should.be.true;
             }
