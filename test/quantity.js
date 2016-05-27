@@ -42,6 +42,12 @@ describe('Quantity', () => {
         new Quantity('m/m').should.have.property('unit', {});
     });
 
+    it('should allow unicode symbols', () => {
+        let q = new Quantity('5 Ω');
+        q.should.have.property('number', 5);
+        q.should.have.property('unit',  { m: 2, kg: 1, s: -3, A: -2 });
+    });
+
     describe('parsing', () => {
         it('should throw when a symbol is unknown', () => {
             new Quantity('100 kg').should.have.property('number', 100);

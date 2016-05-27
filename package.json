@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
-    "jsep": "^0.3.0"
+    "jsep": "https://github.com/richardschneider/jsep/tarball/master"
   },
   "devDependencies": {
     "big.js": "^3.1.3",
