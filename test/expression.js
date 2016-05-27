@@ -49,7 +49,7 @@ describe('Expression', () => {
     });
 
     it('should allow space for multiplication', () => {
-        new Expression('m kg s⁻²').should.eql(new Expression('m × kg × s^-2'));
+        new Expression('m kg s⁻²').should.eql(new Expression('m * kg * s^-2'));
     });
 
     it('should allow unicode numeric superscripts as exponents', () => {
