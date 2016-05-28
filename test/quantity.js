@@ -51,7 +51,7 @@ describe('Quantity', () => {
     describe('parsing', () => {
         it('should throw when a symbol is unknown', () => {
             new Quantity('100 kg').should.have.property('number', 100);
-            (function() { new Quantity('100 kkg'); }).should.throw("Unit 'kkg' is undefined in expression 'kkg'");
+            (function() { new Quantity('100 kkg'); }).should.throw("Unit 'kkg' is undefined in expression '100 kkg'");
         });
     });
 
