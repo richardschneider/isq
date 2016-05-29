@@ -2,6 +2,7 @@
 
 let should = require('should'),
     Quantity = require('../lib/quantity'),
+    config = require('../lib/config'),
     units = Quantity.units;
 
 describe('Quantity', () => {
@@ -54,6 +55,15 @@ describe('Quantity', () => {
         q.should.have.property('number');
         q.number.toNumber().should.eql(5);
         q.should.have.property('unit',  { m: 2, kg: 1, s: -3, A: -2 });
+    });
+
+    it('should have an uncertain number as its number', () => {
+        for (let prop in units) {
+            let q = units[prop];
+            if (q instanceof Quantity) {
+                q.number.should.be.instanceOf(config.UncertainNumber);
+            }
+        }
     });
 
     describe('parsing', () => {
@@ -151,9 +161,9 @@ describe('Quantity', () => {
     });
 
     it('should equal another Quantity when the numbers and units are equal', () => {
+        units.km.equals(units.km).should.be.true;
         units.km.equals(new Quantity('1000 m')).should.be.true;
         units.km.equals(new Quantity('2000 m')).should.be.false;
-        units.km.equals(1000).should.be.false;
     });
 
     it('should equal another Quantity that is not defined in base units', () => {
