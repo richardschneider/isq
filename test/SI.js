@@ -6,20 +6,20 @@ let should = require('should'),
 describe('SI', () => {
 
     it('should create a Number from a string', () => {
-        SI.Number('1.234 56').valueOf().should.equal(1.23456);
-        SI.Number('1.234 56(78)').valueOf().should.equal(1.23456);
-        SI.Number('1.234 56(78)').uncertainty.valueOf().should.equal(0.00078);
+        SI.Number('1.234 56').toNumber().should.equal(1.23456);
+        SI.Number('1.234 56(78)').value.toNumber().should.equal(1.23456);
+        SI.Number('1.234 56(78)').uncertainty.toNumber().should.equal(0.00078);
     });
 
     it('should create a Number from a literal number', () => {
-        SI.Number(1.23456).valueOf().should.equal(1.23456);
+        SI.Number(1.23456).toNumber().should.equal(1.23456);
     });
 
     it('should create a Number from a literal number and uncertainty', () => {
-        SI.Number(1.23456, 0.00078).valueOf().should.equal(1.23456);
-        SI.Number(1.23456, 0.00078).uncertainty.valueOf().should.equal(0.00078);
-        SI.Number(1.23456, '0.00078').uncertainty.valueOf().should.equal(0.00078);
-        SI.Number(1.23456, '7.8 × 10^-4').uncertainty.valueOf().should.equal(0.00078);
+        SI.Number(1.23456, 0.00078).value.toNumber().should.equal(1.23456);
+        SI.Number(1.23456, 0.00078).uncertainty.toNumber().should.equal(0.00078);
+        SI.Number(1.23456, '0.00078').uncertainty.toNumber().should.equal(0.00078);
+        SI.Number(1.23456, '7.8 × 10^-4').uncertainty.toNumber().should.equal(0.00078);
     });
 
     it('should return NaN for an invalid Number', () => {
@@ -41,9 +41,14 @@ describe('SI', () => {
         Q.should.have.property('unit');
     });
 
-    it('should have predefined units', () => {
+    it('should have predefined symbols', () => {
         SI.units.should.have.property('m');
         SI.units.should.have.property('Pa');
+    });
+
+    it('should have predefined names', () => {
+        SI.units.should.have.property('metre');
+        SI.units.should.have.property('pascal');
     });
 
 });

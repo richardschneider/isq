@@ -114,7 +114,7 @@ describe('Number parsing', () => {
 
 describe('Number formatting', () =>{
     it('should return a parseable string', () => {
-        SI.parse(SI.format(10)).should.equal(10);
+        SI.parse(SI.format(10)).toNumber().should.equal(10);
     });
 
     it('should show exponent as a superscript', () => {

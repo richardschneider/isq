@@ -12,22 +12,22 @@ describe('Quantity', () => {
     it('should have a number and a unit', () => {
         let length = new Quantity('5 m');
         length.should.have.property('number');
-        length.valueOf().should.equal(5);
+        length.number.toNumber().should.equal(5);
         length.should.have.property('unit', { m: 1});
     });
 
     it('should allow exponentiation of a unit', () => {
         let area = new Quantity('5 m^2');
         area.should.have.property('number');
-        area.valueOf().should.equal(5);
+        area.number.toNumber().should.equal(5);
         area.should.have.property('unit', { m: 2});
     });
 
     it('should default the number to 1', () => {
         new Quantity().should.have.property('number');
-        new Quantity().valueOf().should.equal(1);
+        new Quantity().number.toNumber().should.equal(1);
         new Quantity('kg').should.have.property('number');
-        new Quantity('kg').valueOf().should.equal(1);
+        new Quantity('kg').number.toNumber().should.equal(1);
         new Quantity('kg').should.have.property('unit', { kg: 1});
     });
 
@@ -37,28 +37,28 @@ describe('Quantity', () => {
 
     it('should allow dimensionless units', () => {
         units.rad.should.have.property('number');
-        units.rad.number.valueOf().should.eql(1);
+        units.rad.number.toNumber().should.eql(1);
         units.rad.should.have.property('unit', {});
 
         new Quantity('1').should.have.property('number');
-        new Quantity('1').number.valueOf().should.eql(1);
+        new Quantity('1').number.toNumber().should.eql(1);
         new Quantity('1').should.have.property('unit', {});
 
         new Quantity('m/m').should.have.property('number');
-        new Quantity('m/m').number.valueOf().should.eql(1);
+        new Quantity('m/m').number.toNumber().should.eql(1);
         new Quantity('m/m').should.have.property('unit', {});
     });
 
     it('should allow unicode symbols', () => {
         let q = new Quantity('5 Ω');
         q.should.have.property('number');
-        q.number.valueOf().should.eql(5);
+        q.number.toNumber().should.eql(5);
         q.should.have.property('unit',  { m: 2, kg: 1, s: -3, A: -2 });
     });
 
     describe('parsing', () => {
         it('should throw when a symbol is unknown', () => {
-            new Quantity('100 kg').number.valueOf().should.have.eql(100);
+            new Quantity('100 kg').number.toNumber().should.have.eql(100);
             (function() { new Quantity('100 kkg'); }).should.throw("Unit 'kkg' is undefined in expression '100 kkg'");
         });
     });
@@ -94,57 +94,57 @@ describe('Quantity', () => {
     describe('Math', () => {
         it('should add 2 quantities', () => {
             let w = new Quantity('5 m').plus(new Quantity('10 m'));
-            w.number.valueOf().should.eql(15);
+            w.number.toNumber().should.eql(15);
             w.should.have.property('unit', { m: 1});
         });
 
         it('should only add quantities', () => {
-            units.kg.plus(units.kg).number.valueOf().should.equal(2);
+            units.kg.plus(units.kg).number.toNumber().should.equal(2);
             (function() { units.kg.plus(1); }).should.throw("'1' is not a quantity");
         });
 
         it('should only add quantities with the same dimensions', () => {
-            units.km.plus(new Quantity('3 cm')).number.valueOf().should.eql(1000.03);
+            units.km.plus(new Quantity('3 cm')).number.toNumber().should.eql(1000.03);
             (function() { units.km.plus(units.kg); }).should.throw("Not the same dimensions");
         });
 
         it('should subtract 2 quantities', () => {
             let w = new Quantity('5 m').minus(new Quantity('10 m'));
-            w.number.valueOf().should.eql(-5);
+            w.number.toNumber().should.eql(-5);
             w.should.have.property('unit', { m: 1});
         });
 
         it('should only subtract quantities', () => {
-            units.kg.plus(units.kg).number.valueOf().should.eql(2);
+            units.kg.plus(units.kg).number.toNumber().should.eql(2);
             (function() { units.kg.minus(1); }).should.throw("'1' is not a quantity");
         });
 
         it('should only subtract quantities with the same dimensions', () => {
-            units.km.minus(new Quantity('1 dam')).number.valueOf().should.eql(990);
+            units.km.minus(new Quantity('1 dam')).number.toNumber().should.eql(990);
             (function() { units.km.minus(units.kg); }).should.throw("Not the same dimensions");
         });
 
         it('should multiply 2 quantities', () => {
             let volumne = new Quantity('5 kg').times(new Quantity('10 kg'));
-            volumne.number.valueOf().should.eql(50);
+            volumne.number.toNumber().should.eql(50);
             volumne.should.have.property('unit', { kg: 2});
         });
 
         it('should multiply a quantity and a number', () => {
             let height = units.metre.times(10);
-            height.number.valueOf().should.eql(10);
+            height.number.toNumber().should.eql(10);
             height.should.have.property('unit', { m: 1});
         });
 
         it('should divide 2 quantities', () => {
             let x = new Quantity('10 kg').dividedBy(new Quantity('5 kg'));
-            x.number.valueOf().should.eql(2);
+            x.number.toNumber().should.eql(2);
             x.should.have.property('unit', {});
         });
 
         it('should divide a quantity by a number', () => {
             let height = units.metre.times(10).dividedBy(2);
-            height.number.valueOf().should.eql(5);
+            height.number.toNumber().should.eql(5);
             height.should.have.property('unit', { m: 1});
         });
 
