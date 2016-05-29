@@ -14,9 +14,9 @@ describe('Uncertain Number', () => {
         n.should.have.property('uncertainty').and.equal(0.0025);
     });
 
-    it('should masquade as a Number', () => {
-        let n = new UncertainNumber(1.23, 0.05) + 2;
-        n.should.equal(3.23);
+    it('should be a Number when there is no uncertainty', () => {
+        new UncertainNumber(1.23, 0).toNumber().should.eql(1.23);
+        (function() { new UncertainNumber(1.23, 0.5).toNumber(); }).should.throw('An uncertain number can not be transformed into a javascript number');
     });
 
     it('should add and propagate uncertainty', () => {
