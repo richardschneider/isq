@@ -10,9 +10,8 @@ describe('Number', () => {
     });
 
     it('should allow named mathmatical operators', () => {
-        SI.config.Number.should.equal(Number);
-
         let a = 2, b = 3, c = -2;
+
         a.plus(b).should.equal(5);
         a.minus(b).should.equal(-1);
         a.times(b).should.equal(6);
@@ -25,9 +24,8 @@ describe('Number', () => {
     });
 
     it('should allow named comparision operators', () => {
-        SI.config.Number.should.equal(Number);
-
         let a = 2, b = 3;
+
         a.eq(b).should.be.false;
         a.ne(b).should.be.true;
         a.lt(b).should.be.true;

@@ -10,8 +10,10 @@ math.applyNames(UncertainNumber);
 describe('Uncertain Number', () => {
     it('should have a value and an uncertainty', () => {
         let n = new UncertainNumber(1.2345, 0.0025);
-        n.should.have.property('value').and.equal(1.2345);
-        n.should.have.property('uncertainty').and.equal(0.0025);
+        n.should.have.property('value');
+        n.should.have.property('uncertainty');
+        n.value.toNumber().should.equal(1.2345);
+        n.uncertainty.toNumber().should.equal(0.0025);
     });
 
     it('should be a Number when there is no uncertainty', () => {
@@ -28,14 +30,14 @@ describe('Uncertain Number', () => {
 
         length = x1.plus(14.4);
         length.should.have.property('value').and.be.approximately(23.7, 0.01);
-        length.should.have.property('uncertainty').and.be.equal(0.2);
+        length.uncertainty.toNumber().should.equal(0.2);
     });
 
     it('should subtract and propagate uncertainty', () => {
         let x1 = new UncertainNumber(9.3, 0.2),
             x2 = new UncertainNumber(14.4, 0.3),
             delta = x2.minus(x1);
-        delta.should.have.property('value', 5.1);
+        delta.value.toNumber().should.equal(5.1);
         delta.should.have.property('uncertainty').and.be.approximately(0.36, 0.001);
 
         let H = new UncertainNumber(2.0, 0.03),
@@ -69,8 +71,8 @@ describe('Uncertain Number', () => {
         let u = new UncertainNumber(120, 3),
             c = 10,
             r = u.dividedBy(c);
-        r.should.have.property('value', 12);
-        r.should.have.property('uncertainty', 30);
+        r.value.toNumber().should.equal(12);
+        r.uncertainty.toNumber().should.equal(30);
     });
 
     it('should raise to power and propagate uncertainty', () => {
