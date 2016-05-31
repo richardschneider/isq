@@ -43,10 +43,10 @@ describe('Number parsing', () => {
         SI.parse('25 × a').should.be.NaN;
     });
 
-    it('should allow multiplication with x', () => {
-        SI.parse('25 x 60.5').should.be.approximately(1512.5, 0);
-        SI.parse('25 x 6.05 x 10^1').should.be.approximately(1512.5, 0);
-        SI.parse('25 x a').should.be.NaN;
+    it('should allow multiplication with *', () => {
+        SI.parse('25 * 60.5').should.be.approximately(1512.5, 0);
+        SI.parse('25 * 6.05 * 10^1').should.be.approximately(1512.5, 0);
+        SI.parse('25 * a').should.be.NaN;
     });
 
     it('should allow an UNICODE exponent, e.g. 10⁻³', () => {

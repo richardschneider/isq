@@ -4,7 +4,6 @@ var should = require('should'),
     math = require('../lib/math'),
     UncertainNumber = require('../lib/UncertainNumber');
 
-math.applyNames(Number);
 math.applyNames(UncertainNumber);
 
 describe('Uncertain Number', () => {
