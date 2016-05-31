@@ -6,10 +6,11 @@ The latest documentation can be read at [Read the Docs](http://isq.readthedocs.o
 
 ### Features
 
-* Uncertainty - `SI.Number('123.456(4)')`
-* SI notation - `SI.Number('1.234 56(4) × 10²')`
-* ASCII notation - `SI.Number('1.234 56(4) x 10^2')`
-* Pluggable - `SI.config.Number = require('BigNumber')`
+* Uncertainty - `SI.Quantity('123.456(4) km')`
+* SI notation - `SI.Quantity('1.234 56(4) × 10² km')`
+* ASCII notation - `SI.Quantity('1.234 56(4) x 10^2 km')`
+* Conversion - `SI.Quantity('25 m/s').to('km/h')`
+* Pluggable - `SI.config.Number = require('big.js')`
 
 ## Getting started [![npm version](https://badge.fury.io/js/isq.svg)](https://badge.fury.io/js/isq)
 
@@ -30,6 +31,11 @@ Create a number with [SI.Number](http://isq.rtfd.io/en/latest/api/SI#Number)
         c = SI.Number('0.03(1)'), // 0.03±0.01
         d = SI.Number(0.03, 0.01); // same as c
 
+Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantity) with a number and a unit
+
+    var a = SI.Quantity('1.03 kg'),
+        b = SI.Quantity('1.03(1) kg'); // 0.03±0.01 kg
+        
 Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
     var c = a.pow(2).plus(b.pow(2)).sqrt()

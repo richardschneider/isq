@@ -175,4 +175,14 @@ describe('Quantity', () => {
         });
     });
 
+    it('should convert to other units', () => {
+        new Quantity('25 m/s').to('km/h').toNumber().should.equal(90);
+        units.metre.times(25).dividedBy(units.second).to('km/h').toNumber().should.equal(90);
+        units.metre.times(2000).to(units.km).toNumber().should.equal(2);
+    });
+
+    it('should not convert when dimensions are different', () => {
+        (function() { new Quantity('25 m/s').to('kg'); }).should.throw("Not the same dimensions");
+    });
+
 });
