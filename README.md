@@ -10,6 +10,7 @@ The latest documentation can be read at [Read the Docs](http://isq.readthedocs.o
 * SI notation - `SI.Quantity('1.234 56(4) × 10² km')`
 * ASCII notation - `SI.Quantity('1.234 56(4) x 10^2 km')`
 * Conversion - `SI.Quantity('25 m/s').to('km/h')`
+* Symbolic expressions - `SI.Quantity('W/(m² sr)')`
 * Pluggable - `SI.config.Number = require('big.js')`
 
 ## Getting started [![npm version](https://badge.fury.io/js/isq.svg)](https://badge.fury.io/js/isq)
@@ -31,10 +32,11 @@ Create a number with [SI.Number](http://isq.rtfd.io/en/latest/api/SI#Number)
         c = SI.Number('0.03(1)'), // 0.03±0.01
         d = SI.Number(0.03, 0.01); // same as c
 
-Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantity) with a number and a unit
+Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantity) with an optional number and a unit
 
     var a = SI.Quantity('1.03 kg'),
-        b = SI.Quantity('1.03(1) kg'); // 0.03±0.01 kg
+        b = SI.Quantity('1.03(1) kg') // 1.03±0.01 kg
+        kg = SI.Quantity('kg'); // 1 kg
         
 Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
@@ -55,7 +57,7 @@ Uncertainity, or margin of error, describes the imperfect nature of a measuremen
         b = SI.Number('1.3(3)'),   // 1.3±0.3
         length = a.plus(b);        // 2.5±0.4
 
-When comparing uncertain number, the uncertainity of both values is taken into consideration. Equality *Is the difference of the two values within the resulting uncertainty?* 
+When comparing uncertain numbers, the uncertainity of both values is taken into consideration. Equality *Is the difference of the two values within the resulting uncertainty?* 
 
 # License
 The [MIT license](LICENSE).

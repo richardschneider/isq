@@ -4,11 +4,11 @@ Uncertainity, or margin of error, describes the imperfect nature of a measuremen
 
 According to [NIST](http://physics.nist.gov/cgi-bin/cuu/Value?mn), the mass of a neutron is `1.674 927 471 x 10⁻²⁷ kg` with a standard uncertainity of `0.000 000 021 x 10⁻²⁷ kg`.  
 
-An [uncertain number](api/UncertainNumber) has a [value](api/UncertainNumber#value) and an [uncertainty](api/UncertainNumber#uncertainty). It is created in the following ways:
+An [uncertain number](api/UncertainNumber) has a [value](api/UncertainNumber#value) and an [uncertainty](api/UncertainNumber#uncertainty). It can be created in the following ways:
 
-    let mn = SI.Number('1.674 927 471(21) × 10⁻²⁷')
-    let mn = SI.Number('1.674 927 471(21) * 10^-27')
-    let mn = SI.Number(1.674927471e-27, 0.000000021e-27)
+    let mn = SI.Quantity('1.674 927 471(21) × 10⁻²⁷ kg')
+    let mn = SI.Quantity('1.674 927 471(21) * 10^-27 kg')
+    let mn = SI.unit.kg.times(SI.Number(1.674927471e-27, 0.000000021e-27))
 
 ### Propagation
 

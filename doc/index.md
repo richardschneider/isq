@@ -8,5 +8,6 @@ Check out [Getting Started](gettingStarted) for instructions on how to quickly s
 ### Features
 * [Uncertainty](uncertainty.md)
 * [SI and ASCII notation](notation.md)
+* [Symbolic expressions](notation.md#Quantity)
 * [Pluggable architecture](pluggable.md)
 
