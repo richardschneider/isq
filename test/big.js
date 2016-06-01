@@ -74,4 +74,13 @@ describe('SI Number using big.js', () => {
     it('should be human readable', () => {
         SI.Number('1.2345(23)').toString().should.equal('1.2345 ± 0.0023');
     });
+
+    it('should take the square root and power of a number', () => {
+        let a = SI.Quantity('1.2 m'),
+            b = SI.Quantity('80 cm'),
+            c = a.pow(2).plus(b.pow(2)).sqrt();
+        c.number.should.be.approximately(1.44, 0.005);
+        c.should.have.property('unit', { m: 1});
+    });
+
 });

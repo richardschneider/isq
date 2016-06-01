@@ -158,6 +158,14 @@ describe('Quantity', () => {
             height.should.have.property('unit', { m: 1});
         });
 
+        it('should take the square root and power of a number', () => {
+            let a = new Quantity('1.2 m'),
+                b = new Quantity('80 cm'),
+                c = a.pow(2).plus(b.pow(2)).sqrt();
+            c.number.should.be.approximately(1.44, 0.005);
+            c.should.have.property('unit', { m: 1});
+        });
+
     });
 
     it('should equal another Quantity when the numbers and units are equal', () => {

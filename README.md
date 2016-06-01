@@ -40,7 +40,9 @@ Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantit
         
 Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
-    var c = a.pow(2).plus(b.pow(2)).sqrt()
+    var a = SI.Quantity('1.2 m'),
+        b = SI.Quantity('80 cm'), // 0.8 m
+        c = a.pow(2).plus(b.pow(2)).sqrt(); // ~ 1.44 m
 
 # Rounding errors
 
