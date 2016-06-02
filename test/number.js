@@ -122,7 +122,18 @@ describe('Number formatting', () =>{
     });
 
     it('should allow exponent as ASCII', () => {
-        SI.formatExponent(-1, { exponentMark: '**'}).should.equal('**-1');
+        SI.formatExponent(-1, { unicodeSuperscript: false, exponentMark: '**'}).should.equal('**-1');
     });
+
+    it('should group digits', () => {
+        SI.format(12345.67899).should.equal('12 345.678 99');
+        SI.format(SI.parse('1.674 927 28 × 10⁻²⁷')).should.equal('1.674 927 279 999 999 8 × 10⁻²⁷'); // TODO: impremise math
+    });
+
+    it('should show powers of 10', () => {
+        SI.format(1000, { powersOf10: true}).should.equal('10³');
+        SI.format(1000, { powersOf10: false}).should.equal('1 000');
+    });
+
 });
 
