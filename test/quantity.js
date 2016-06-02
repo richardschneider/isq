@@ -105,6 +105,12 @@ describe('Quantity', () => {
             new Quantity('-5 * 10^-6 s').toString().should.equal('-5 µs');
             new Quantity('50 000 V/A').toString().should.equal('50 kΩ');
         });
+
+        it('should use special symbols', () => {
+            let pascalSecond = new Quantity('m⁻¹ kg s⁻¹');
+            pascalSecond.toString().should.equal('1 Pa s');
+            new Quantity('1 Pa s').toString().should.equal('1 Pa s');
+        });
     });
 
     describe('Math', () => {
