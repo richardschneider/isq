@@ -38,6 +38,11 @@ Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantit
         b = SI.Quantity('1.03(1) kg') // 1.03±0.01 kg
         kg = SI.Quantity('kg'); // 1 kg
         
+A Quantity is converted to a string with the [toString()]((http://isq.rtfd.io/en/latest/api/Quantity#toString) method.  It uses a heuristic to determine the best symbol to use.
+
+    SI.Quantity('5 * 10^-6 s').toString()  // 5 µs
+    SI.Quantity('50 000 V/A').toString()   // 50 kΩ
+
 Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
     var a = SI.Quantity('1.2 m'),
