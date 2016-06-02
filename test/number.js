@@ -130,6 +130,12 @@ describe('Number formatting', () =>{
         SI.format(SI.parse('1.674 927 28 × 10⁻²⁷')).should.equal('1.674 927 279 999 999 8 × 10⁻²⁷'); // TODO: impremise math
     });
 
+    it('should allow comma for a deciaml marker', () => {
+        let x = 12345.67899;
+        SI.format(x, {decimalMark: ','}).should.equal('12 345,678 99');
+        SI.parse(SI.format(x, {decimalMark: ','})).should.equal(x);
+    });
+
     it('should show powers of 10', () => {
         SI.format(1000, { powersOf10: true}).should.equal('10³');
         SI.format(1000, { powersOf10: false}).should.equal('1 000');
