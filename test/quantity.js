@@ -99,6 +99,12 @@ describe('Quantity', () => {
             let entropy1 = new Quantity(entropy0.toString());
             entropy0.should.eql(entropy1);
         });
+
+        it('should show the best symbol', () => {
+            new Quantity('5 * 10^-6 s').toString().should.equal('5 µs');
+            new Quantity('-5 * 10^-6 s').toString().should.equal('-5 µs');
+            new Quantity('50 000 V/A').toString().should.equal('50 kΩ');
+        });
     });
 
     describe('Math', () => {
