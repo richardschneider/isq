@@ -48,7 +48,7 @@ gulp.task('coveralls', ['istanbul'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('bump', ['test'], function () {
+gulp.task('bump', function () {
   if (!CI)
     throw new Error('Bumping the version number is only allowed in continuous integration');
 
@@ -63,6 +63,6 @@ gulp.task('bump', ['test'], function () {
 
 gulp.task('test', ['lint', 'istanbul']);
 
-gulp.task('release', ['bump', 'coveralls']);
+gulp.task('release', ['bump']);
 
 gulp.task('default', ['test', 'coveralls']);
