@@ -44,8 +44,8 @@ gulp.task('coveralls', ['istanbul'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('bump', ['test'], function () {
-  var bumpType = plugins.util.env.type || 'patch'; // major.minor.patch
+gulp.task('bump', function () {
+  var bumpType = plugins.util.env.type || 'minor'; // major.minor.patch
 
   return gulp.src(['./package.json'])
     .pipe(plugins.bump({ type: bumpType }))
@@ -54,6 +54,6 @@ gulp.task('bump', ['test'], function () {
 
 gulp.task('test', ['lint', 'istanbul']);
 
-gulp.task('release', ['bump']);
+gulp.task('release', ['bump', 'test', 'coveralls']);
 
 gulp.task('default', ['test', 'coveralls']);
