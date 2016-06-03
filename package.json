@@ -16,7 +16,7 @@
   "main": "./lib/isq.js",
   "scripts": {
     "test": "mocha",
-    "ci": "gulp"
+    "ci": "gulp release"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
