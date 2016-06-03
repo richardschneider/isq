@@ -15,7 +15,7 @@ script:
 after_success:
   - git config credential.helper "store --file=.git/credentials"
   - echo "https://${RELEASE_TOKEN}:@github.com" > .git/credentials
-  - gulp release
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then gulp release; fi
 notifications:
   webhooks:
     urls:
