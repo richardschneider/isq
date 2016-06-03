@@ -44,7 +44,7 @@ gulp.task('coveralls', ['istanbul'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('bump', ['test'], function () {
+gulp.task('bump', function () {
   var bumpType = plugins.util.env.type || 'minor'; // major.minor.patch
 
   return gulp.src(['./package.json'])
