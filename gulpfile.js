@@ -43,7 +43,7 @@ gulp.task('istanbul', function () {
 });
 
 gulp.task('coveralls', ['istanbul'], function () {
-  if (!process.env.CI) return;
+  if (!CI) return;
   return gulp.src('./coverage/lcov.info')
     .pipe(coveralls());
 });
