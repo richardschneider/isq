@@ -1,10 +1,14 @@
 'use strict';
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+    bump = require('gulp-bump'),
+    filter = require('gulp-filter'),
+    tag_version = require('gulp-tag-version');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-spawn-mocha');
 var coveralls = require('gulp-coveralls');
 var plugins = require('gulp-load-plugins')();
+
 var DEBUG = process.env.NODE_ENV === 'debug',
     CI = process.env.CI === 'true';
 
@@ -39,21 +43,26 @@ gulp.task('istanbul', function () {
 });
 
 gulp.task('coveralls', ['istanbul'], function () {
-  if (!process.env.CI) return;
+  if (!CI) return;
   return gulp.src('./coverage/lcov.info')
     .pipe(coveralls());
 });
 
-gulp.task('bump', function () {
-  var bumpType = plugins.util.env.type || 'minor'; // major.minor.patch
+gulp.task('bump', ['test'], function () {
+  if (!CI)
+    throw new Error('Bumping the version number is only allowed in continuous integration');
+
+  var bumpType = 'minor'; // major or minor or patch
 
   return gulp.src(['./package.json'])
-    .pipe(plugins.bump({ type: bumpType }))
-    .pipe(gulp.dest('./'));
+    .pipe(bump({ type: bumpType }))
+    .pipe(gulp.dest('./'))
+    .pipe(filter('package.json'))
+    .pipe(tag_version());
 });
 
 gulp.task('test', ['lint', 'istanbul']);
 
-gulp.task('release', ['bump', 'test', 'coveralls']);
+gulp.task('release', ['bump', 'coveralls']);
 
 gulp.task('default', ['test', 'coveralls']);
