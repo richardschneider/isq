@@ -3,7 +3,7 @@ The development process is aligned with [GitHub Flow](https://guides.github.com/
 ## Making a change
 
 To make a change
-* If no done already, then fork the project
+* If not done already, then fork the project
 * Create a new branch
 * Make you changes and then push them
 * Create a [pull request](https://help.github.com/articles/using-pull-requests/)
