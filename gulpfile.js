@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    git = require('gulp-git'),
     bump = require('gulp-bump'),
     filter = require('gulp-filter'),
     tag_version = require('gulp-tag-version');
@@ -57,6 +58,7 @@ gulp.task('bump', function () {
   return gulp.src(['./package.json'])
     .pipe(bump({ type: bumpType }))
     .pipe(gulp.dest('./'))
+    .pipe(git.commit('bumps package version'))
     .pipe(filter('package.json'))
     .pipe(tag_version());
 });
