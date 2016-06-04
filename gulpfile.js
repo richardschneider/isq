@@ -55,8 +55,11 @@ gulp.task('tagit', function(done) {
             if (err) done(err);
             var next = info.next.patch;
             console.log('next patch', next);
-            var opts = { push: true };
-            git.tag(next.tag, 'new version ' + next.version, opts, done);
+            var opts = { };
+            git.tag(next.tag, 'new version ' + next.version, opts, function(err) {
+                if (err) done(err);
+                git.push('origin', next.tag, done);
+            });
         });
     }
 });
