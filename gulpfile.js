@@ -2,16 +2,16 @@
 
 var gulp = require('gulp'),
     git = require('gulp-git'),
-    bump = require('gulp-bump'),
-    filter = require('gulp-filter'),
-    tag_version = require('gulp-tag-version');
+    version = require('./gulp-next-version');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-spawn-mocha');
 var coveralls = require('gulp-coveralls');
 var plugins = require('gulp-load-plugins')();
 
 var DEBUG = process.env.NODE_ENV === 'debug',
-    CI = process.env.CI === 'true';
+    CI = process.env.CI === 'true',
+    branch = process.env.TRAVIS_BRANCH,
+    buildTag = process.env.TRAVIS_TAG;
 
 var paths = {
   tests: ['./test/**/*.js', '!test/{temp,temp/**}'],
@@ -49,22 +49,18 @@ gulp.task('coveralls', ['istanbul'], function () {
     .pipe(coveralls());
 });
 
-gulp.task('bump', function () {
-  if (!CI)
-    throw new Error('Bumping the version number is only allowed in continuous integration');
-
-  var bumpType = 'minor'; // major or minor or patch
-
-  return gulp.src(['./package.json'])
-    .pipe(bump({ type: bumpType }))
-    .pipe(gulp.dest('./'))
-    .pipe(git.commit('bumps package version'))
-    .pipe(filter('package.json'))
-    .pipe(tag_version());
+gulp.task('tagit', function(done) {
+    if (CI && branch === 'master' && !buildTag) {
+        version(function(err, info) {
+            if (err) done(err);
+            var next = info.next.patch;
+            console.log('next patch', next);
+            var opts = { push: true };
+            git.tag(next.tag, 'new version ' + next.version, opts, done);
+        });
+    }
 });
 
 gulp.task('test', ['lint', 'istanbul']);
-
-gulp.task('release', ['bump']);
 
 gulp.task('default', ['test', 'coveralls']);
