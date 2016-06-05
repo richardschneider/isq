@@ -22,7 +22,7 @@ For example, `1.234 567 891(5) * 10**4` is equivalent to `12345.67891±0.000
 
 ### Quantity
 
-A SI Quantity consists of a *number* and a *unit*.  If not specified, the *number* defaults to `1`.  The *unit* is a defined [ISO-80000]() symbol or a symbolic expression.  
+A SI Quantity consists of a *number* and a *unit*.  If not specified, the *number* defaults to `1`.  The *unit* is a defined [ISO-80000](https://en.wikipedia.org/wiki/ISO/IEC_80000) symbol or a symbolic expression.  
 
 Any of the following expressions can be used to define *watt per square metre steradian*:
 
