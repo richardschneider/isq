@@ -14,7 +14,7 @@ before_script:
 script:
   - gulp
 after_success:
-  - npm run semantic-release
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then npm run semantic-release; fi
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
