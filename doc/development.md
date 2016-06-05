@@ -16,11 +16,11 @@ When the pull request is approved, it is merged into `master` and released to np
  
 The commit message(s) is used to determine the type of release (major, minor, patch) and to build the release notes.  The message **should** conform to these [conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.uyo6cb12dt6w). The first line has the form *type*(*scope*): *subject*, where
 
-* *type* is `feat`, `fix`, `docs`, `style`, `refactor`, `test` or `chore`
+* *type* is `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test` or `chore`
 * *scope* is anything specifying the place of change
 * *subject* is a short description
 
 For example
 
     $ git commit -m 'docs(git): format of a commit message'
-    $ git commit -m 'fix(number): thin space for digit separator'
+    $ git commit -m 'fix(number.format): thin space for digit separator'
