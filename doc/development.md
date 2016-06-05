@@ -1,3 +1,5 @@
+Please improve this project.
+
 The development process is aligned with [GitHub Flow](https://guides.github.com/introduction/flow/).  Whenever, a successful commit is made to the `master` branch it is automatically published as a [npm package](https://www.npmjs.com/package/isq). Most of the magic is performed by [semantic-release](https://github.com/semantic-release/semantic-release).
 
 ## Making a change
