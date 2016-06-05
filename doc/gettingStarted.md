@@ -7,6 +7,8 @@ You'll need to have the following software installed:
 
 ### Installation
 
+The latest version is always available on NPM
+
     > npm install isq
     
 The [big.js](https://www.npmjs.com/package/big.js) package is recommended for arbitrary-precision decimal arithmetic.
