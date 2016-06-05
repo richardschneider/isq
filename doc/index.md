@@ -6,6 +6,7 @@ ISQ is a javascript implementation of [ISO-80000](https://en.wikipedia.org/wiki/
 Check out [Getting Started](gettingStarted) for instructions on how to quickly set up and use ISQ.
 
 ### Features
+
 * [Uncertainty](uncertainty.md)
 * [SI and ASCII notation](notation.md)
 * [Symbolic expressions](notation.md#Quantity)
