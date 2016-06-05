@@ -5,18 +5,18 @@
     "name": "Richard Schneider",
     "email": "makaretu@gmail.com"
   },
-  "version": "0.45.0",
   "license": "MIT",
   "homepage": "https://richardschneider.github/isq",
   "bugs": "https://github.com/richardschneider/isq/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/richardschneider/isq"
+    "url": "https://github.com/richardschneider/isq"
   },
   "main": "./lib/isq.js",
   "scripts": {
     "test": "mocha",
-    "ci": "gulp release"
+    "ci": "gulp release",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "big.js": "^3.1.3",
+    "ghooks": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-git": "^1.7.2",
@@ -35,6 +36,13 @@
     "gulp-util": "^3.0.1",
     "jshint-stylish": "^0.4.0",
     "mocha": "*",
-    "should": "^4.0.4"
+    "should": "^4.0.4",
+    "validate-commit-msg": "^2.6.1",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    }
   }
 }

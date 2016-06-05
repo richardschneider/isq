@@ -1,17 +1,13 @@
 'use strict';
 
-var gulp = require('gulp'),
-    git = require('gulp-git'),
-    version = require('./gulp-next-version');
+var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-spawn-mocha');
 var coveralls = require('gulp-coveralls');
 var plugins = require('gulp-load-plugins')();
 
 var DEBUG = process.env.NODE_ENV === 'debug',
-    CI = process.env.CI === 'true',
-    branch = process.env.TRAVIS_BRANCH,
-    buildTag = process.env.TRAVIS_TAG;
+    CI = process.env.CI === 'true';
 
 var paths = {
   tests: ['./test/**/*.js', '!test/{temp,temp/**}'],
@@ -47,21 +43,6 @@ gulp.task('coveralls', ['istanbul'], function () {
   if (!CI) return;
   return gulp.src('./coverage/lcov.info')
     .pipe(coveralls());
-});
-
-gulp.task('tagit', function(done) {
-    if (CI && branch === 'master' && !buildTag) {
-        version(function(err, info) {
-            if (err) done(err);
-            var next = info.next.patch;
-            console.log('next patch', next);
-            var opts = { };
-            git.tag(next.tag, 'new version ' + next.version, opts, function(err) {
-                if (err) done(err);
-                git.push('origin', next.tag, done);
-            });
-        });
-    }
 });
 
 gulp.task('test', ['lint', 'istanbul']);

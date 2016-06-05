@@ -1,21 +1,20 @@
+sudo: false
 language: node_js
-env:
-  matrix:
-  - CI=true
-  global:
-    secure: D9eLANZalNmhng+nFrUyHPu0pupB++jKCLL3K/uqdsZThyFCDMkSpW0Y7nDrYCkvDdEMCRtauVpY0lOtguJ3PtnD7ZBya4QC2VvS/a1j5UKTWWNnO//guEwkcwKXxMgkF/24RHwlbqxbYIWVaKBF8mkMhP5BXWoHcgAx0c7SW1PbwobOT4j4jEJPAzeLuy/0ZTBU8508Hf+2o9ItTVLQYiF3EAzaTUAh8ZfN/vEFeMKU7KrJIPvccLK7FHzo7fTlOhn+enPzs3SGlgt5gMW7/FekW5GXFzZed8skS58fxgmyfpX5IuM110hO6+54tlJWkWkgFjp0nHx9t/DIkOdB//4ECFqiuyS82gXZHWaXBcktqd+3kPQOsRjPgffcaXRJpHGVftuqxjz+v+RQambspMsm211/rSTQ/BN6bDxmteSywAQ1FVQkDDTg13JVYi3REiv5ZatjqShy9IE8b7VFwnPgKnm+h4DX4aneiMnkx1fcxNo3wLID4ckjSlUCJ3gesDIHub3pUsyOulPulbS0NSD7E0CGsW+mQGarPXCLoWCw9IpeQtn64HBUIl5S9BQFREC5M+kzLle4tHVCSxAQyl41NI2bNoeBuluSPn2Z7pytk11NDzsFIkyo6L2OcqKSjgcm2BOBsX3lt+VtAqHQqqqHN/XIjEkG3RztpmTFBP4=
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-- stable
+  - stable
+before_install:
+  - npm i -g npm@^2.0.0
 before_script:
-- git checkout $TRAVIS_BRANCH
-- npm install -g gulp
+  - npm prune
 script:
-- gulp
-- pkg=$(npm pack)
-- npm install -g $pkg
+  - gulp
 after_success:
-  - git config user.email "noreply@somewhere.org"
-  - git config user.name "Travis ISQ"
-  - git config credential.helper "store --file=.git/credentials"
-  - echo "https://${RELEASE_TOKEN}:@github.com" > .git/credentials
-  - gulp tagit
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then npm run semantic-release; fi
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
