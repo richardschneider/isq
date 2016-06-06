@@ -192,7 +192,7 @@ describe('Quantity', () => {
                 let others = Array.isArray(def.other) ? def.other : [def.other];
                 others.forEach(other => {
                     let q = new Quantity(other);
-                    units[def.name].equals(q).should.be.true;
+                    q.toString().should.equal(units[def.name].toString());
                 });
             }
         };
