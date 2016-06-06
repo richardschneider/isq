@@ -187,12 +187,17 @@ describe('Quantity', () => {
     });
 
     it('should equal another Quantity that is not defined in base units', () => {
-        require('../lib/def/derived').forEach(def => {
+        let check = function(def) {
             if (def.other) {
-                let q = new Quantity(def.other);
-                units[def.name].equals(q).should.be.true;
+                let others = Array.isArray(def.other) ? def.other : [def.other];
+                others.forEach(other => {
+                    let q = new Quantity(other);
+                    q.toString().should.equal(units[def.name].toString());
+                });
             }
-        });
+        };
+        require('../lib/def/derived').forEach(check);
+        require('../lib/def/other').forEach(check);
     });
 
     it('should convert to other units', () => {
