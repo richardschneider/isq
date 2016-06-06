@@ -19,10 +19,10 @@ describe('Expression', () => {
         });
 
         it('should remove redundant parentheses', () => {
-            new Expression('(a + b) + (c^2)').toString().should.equal('a+b+c^2');
-            new Expression('(a + b) / (c^2)').toString().should.equal('(a+b)/c^2');
+            new Expression('(a + b) + (c^2)').toString().should.equal('a+b+c²');
+            new Expression('(a + b) / (c^2)').toString().should.equal('(a+b)/c²');
             new Expression('(a + b) / (c^(z+n))').toString().should.equal('(a+b)/c^(z+n)');
-            new Expression('(a + (b / (c^2)))').toString().should.equal('a+b/c^2');
+            new Expression('(a + (b / (c^2)))').toString().should.equal('a+b/c²');
             new Expression('(a + (b / (c^(z+n))))').toString().should.equal('a+b/c^(z+n)');
         });
 
@@ -76,7 +76,7 @@ describe('Expression', () => {
                 c: new Expression('x^b')
             };
 
-        x.resolve(symbol => defs[symbol]).toString().should.equal('-1+2+x^2');
+        x.resolve(symbol => defs[symbol]).toString().should.equal('-1+2+x²');
     });
 
     it('should be immutable', () => {
