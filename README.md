@@ -1,8 +1,12 @@
-# isq [![Travis build status](https://travis-ci.org/richardschneider/isq.svg)](https://travis-ci.org/richardschneider/isq) [![Coverage Status](https://coveralls.io/repos/github/richardschneider/isq/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/isq?branch=master) [![Documentation Status](http://readthedocs.org/projects/isq/badge/?version=latest)](http://isq.readthedocs.org/en/latest/?badge=latest) [![Gitter](https://badges.gitter.im/richardschneider/isq.svg)](https://gitter.im/richardschneider/isq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+# isq 
+
+[![Travis build status](https://travis-ci.org/richardschneider/isq.svg)](https://travis-ci.org/richardschneider/isq) [![Coverage Status](https://coveralls.io/repos/github/richardschneider/isq/badge.svg?branch=master)](https://coveralls.io/github/richardschneider/isq?branch=master) 
+
+ [![npm version](https://badge.fury.io/js/isq.svg)](https://badge.fury.io/js/isq) [![Documentation Status](http://readthedocs.org/projects/isq/badge/?version=latest)](http://isq.readthedocs.org/en/latest/?badge=latest) [![Gitter](https://badges.gitter.im/richardschneider/isq.svg)](https://gitter.im/richardschneider/isq?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A javascript implementation of the International System of Quantities, [ISO-80000](https://en.wikipedia.org/wiki/ISO/IEC_80000).
 
-The latest documentation can be read at [Read the Docs](http://isq.readthedocs.org/en/latest/).
+The latest documentation can be read at [Read the Docs](http://isq.readthedocs.org/en/latest/).  The release history and change notes are on [github](https://github.com/richardschneider/isq/releases).
 
 ### Features
 
@@ -13,7 +17,7 @@ The latest documentation can be read at [Read the Docs](http://isq.readthedocs.o
 * Symbolic expressions - `SI.Quantity('W/(m² sr)')`
 * Pluggable - `SI.config.Number = require('big.js')`
 
-## Getting started [![npm version](https://badge.fury.io/js/isq.svg)](https://badge.fury.io/js/isq)
+## Getting started
 
 Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
