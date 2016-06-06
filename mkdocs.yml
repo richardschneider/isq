@@ -9,6 +9,7 @@ pages:
 - Math: math.md
 - Uncertainty: uncertainty.md
 - Configuration:  pluggable.md
+- Options: options.md
 - Support: support.md
 - Development: development.md
 - Resources: resources.md
