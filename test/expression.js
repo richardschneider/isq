@@ -149,6 +149,11 @@ describe('Expression', () => {
         it('should throw on unresolved identifier', () => {
             (function() { new Expression('a').evaluate();} ).should.throw("'a' is undefined");
         });
-});
+
+        it('should throw on empty expression', () => {
+           (function() { new Expression('  '); }).should.throw("Empty expression is not allowed");
+        });
+
+    });
 
 });

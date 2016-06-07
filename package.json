@@ -6,24 +6,29 @@
     "email": "makaretu@gmail.com"
   },
   "license": "MIT",
+  "version": "0.0.0-alpha",
   "homepage": "https://richardschneider.github/isq",
   "bugs": "https://github.com/richardschneider/isq/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/richardschneider/isq"
   },
-  "main": "./lib/isq.js",
+  "main": "index.js",
+  "bin" : {
+    "isq" : "./bin/isq"
+  },
   "scripts": {
     "test": "mocha",
     "ci": "gulp release",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
+    "big.js": "^3.1.3",
+    "commander": "^2.9.0",
     "deep-equal": "^1.0.1",
     "jsep": "https://github.com/richardschneider/jsep/tarball/master"
   },
   "devDependencies": {
-    "big.js": "^3.1.3",
     "ghooks": "^1.2.1",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",

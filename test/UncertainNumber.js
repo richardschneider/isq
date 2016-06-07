@@ -91,4 +91,13 @@ describe('Uncertain Number', () => {
         a.cmp(1.2).should.equal(-1);
     });
 
+    describe('valueOf', () => {
+        it('should be a number when it is exact', () => {
+           new UncertainNumber(10).valueOf().should.equal(10);
+        });
+
+        it('should be a string when it is uncertain', () => {
+           new UncertainNumber(10, 1).valueOf().should.equal('10 ± 1');
+        });
+    });
 });
