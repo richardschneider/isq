@@ -1,0 +1,43 @@
+#! /usr/bin/env node
+/*
+ * isq-cli
+ * https://github.com/richardschneider/isq
+ *
+ * Copyright (c) 2015-2016 Richard Schneider
+ * Licensed under the MIT license.
+ */
+
+'use strict';
+
+let program = require('commander'),
+    SI = require('../.');
+
+program
+    .version(require('../package.json').version)
+    .usage('[options] expression')
+    .description('SI quantities')
+    .option('-b, --base', 'output in SI base units')
+    .option('--to <unit>', 'convert to another unit')
+    .option('--number <package>', 'the number [package] to use. Defaults to "big.js". "js" will use standard javascript numbers.', 'big.js')
+;
+
+program.parse(process.argv);
+
+if (!program.args.length)
+	return program.help();
+
+if (program.number != 'js' && program.number != 'javascript')
+    SI.config.Number = require(program.number);
+
+let expr = program.args.join(' '),
+    options = {
+        bestSymbol: !program.base
+    },
+    q = SI.Quantity(expr, options),
+    result = q;
+
+if (program.to) {
+    result = q.to(program.to, options) + ' ' + program.to;
+}
+
+console.log(result.toString(options));
