@@ -116,6 +116,16 @@ describe('Quantity', () => {
             new Quantity('80 cm').toString().should.equal('80 cm');  // not '8 dm'
             new Quantity('800 cm').toString().should.equal('8 m');
         });
+
+        it('should use symbols from other measurement systems', () => {
+           new Quantity('(5.5 * 1852) m').toString({ system: 'non-SI'}).should.equal('5.5 M');
+           new Quantity('(5.5 * 1852) m').toString({ system: 'SI'}).should.equal('10.186 km');
+           new Quantity('25 m/s').toString({ system: 'SI'}).should.equal('25 m s⁻¹');
+        });
+
+        it('should throw on undefined measurement system', () => {
+            (function() {new Quantity('25 m/s').toString({ system: 'xxx'});} ).should.throw("'xxx' is an undefined measurement system");
+        });
     });
 
     describe('math', () => {
@@ -227,7 +237,6 @@ describe('Quantity', () => {
                 system.should.have.property('name', sname);
             }
         });
-
 
         it('should have defined units(symbols)', () => {
             for (let sname in Quantity.systems) {
