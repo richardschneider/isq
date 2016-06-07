@@ -118,7 +118,7 @@ describe('Quantity', () => {
         });
     });
 
-    describe('Math', () => {
+    describe('math', () => {
         it('should add 2 quantities', () => {
             let w = new Quantity('5 m').plus(new Quantity('10 m'));
             w.number.toNumber().should.eql(15);
@@ -213,6 +213,30 @@ describe('Quantity', () => {
 
     it('should not convert when dimensions are different', () => {
         (function() { new Quantity('25 m/s').to('kg'); }).should.throw("Not the same dimensions");
+    });
+
+    describe('measurement system', () => {
+        it('should exist', () => {
+            Quantity.systems.should.have.property('SI');
+            Quantity.systems.should.have.property('non-SI');
+        });
+
+        it('should have a name', () => {
+            for (let sname in Quantity.systems) {
+                let system = Quantity.systems[sname];
+                system.should.have.property('name', sname);
+            }
+        });
+
+
+        it('should have defined units(symbols)', () => {
+            for (let sname in Quantity.systems) {
+                let system = Quantity.systems[sname];
+                system.should.have.property('units');
+                Object.keys(system.units).length.should.be.greaterThan(0);
+            }
+        });
+
     });
 
 });
