@@ -146,5 +146,10 @@ describe('Number formatting', () =>{
         SI.format(1234, { minDigitsForSeparation: 4}).should.equal('1 234');
     });
 
+    it('should group decimal parts', () => {
+        SI.format(0.1234).should.equal('0.1234');
+        SI.format(0.1234, { minDigitsForSeparation: 4}).should.equal('0.123 4');
+    });
+
 });
 
