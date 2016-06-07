@@ -114,7 +114,7 @@ describe('Quantity', () => {
 
         it('should ignore some prefixes', () => {
             new Quantity('80 cm').toString().should.equal('80 cm');  // not '8 dm'
-            new Quantity('800 cm').toString().should.equal('1 m');
+            new Quantity('800 cm').toString().should.equal('8 m');
         });
     });
 
