@@ -72,7 +72,27 @@ When comparing uncertain numbers, the uncertainity of both values is taken into 
 
 # Command line
 
-A command line interface (isq) is also available.  
+A command line interface (`isq`) is also available. Type `isq --help` for the most current usage.
+
+````
+  Usage: isq [options] expression
+
+  SI quantities
+
+  Options:
+
+    -h, --help          output usage information
+    -V, --version       output the version number
+    -b, --base          output in SI base units
+    --to <unit>         convert to another unit
+    --number <package>  the number [package] to use. Defaults to "big.js". 
+                        "js" will use standard javascript numbers.
+````
+
+To convert a quantity try something like:
+
+    isq 25 m/s --to km/h
+     
 # License
 The [MIT license](LICENSE).
 
