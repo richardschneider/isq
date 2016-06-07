@@ -70,6 +70,9 @@ Uncertainity, or margin of error, describes the imperfect nature of a measuremen
 
 When comparing uncertain numbers, the uncertainity of both values is taken into consideration. Equality *Is the difference of the two values within the resulting uncertainty?* 
 
+# Command line
+
+A command line interface (isq) is also available.  
 # License
 The [MIT license](LICENSE).
 
