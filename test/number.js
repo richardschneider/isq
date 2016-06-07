@@ -126,11 +126,15 @@ describe('Number formatting', () =>{
     });
 
     it('should group digits', () => {
+        SI.format(1234).should.equal('1234');
+        SI.format(12345).should.equal('12 345');
+        SI.format(-1234).should.equal('-1234');
+        SI.format(-12345).should.equal('-12 345');
         SI.format(12345.67899).should.equal('12 345.678 99');
         SI.format(SI.parse('1.674 927 28 × 10⁻²⁷')).should.equal('1.674 927 279 999 999 8 × 10⁻²⁷'); // TODO: impremise math
     });
 
-    it('should allow comma for a deciaml marker', () => {
+    it('should allow comma for a decimal marker', () => {
         let x = 12345.67899;
         SI.format(x, {decimalMark: ','}).should.equal('12 345,678 99');
         SI.parse(SI.format(x, {decimalMark: ','})).should.equal(x);
@@ -149,6 +153,7 @@ describe('Number formatting', () =>{
     it('should group decimal parts', () => {
         SI.format(0.1234).should.equal('0.1234');
         SI.format(0.1234, { minDigitsForSeparation: 4}).should.equal('0.123 4');
+        SI.format(0.00000000000000000000000075888).should.equal('7.5888 × 10⁻²⁵');
     });
 
 });
