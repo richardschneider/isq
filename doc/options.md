@@ -19,4 +19,5 @@ powersOf10 | `true` | Exact powers of 10 are shown as an exponent, such as `10³
 unicodeSuperscript | `true` | Use uncode superscript code points to represent a numeric exponent.
 bestSymbol | `true` | Finds the best symbol to represent the value.  If `false`, it is represented in SI base units, `1 km` vs. `10³ m`.
 ignoreSymbols | `['deca', 'hecto', 'deci']` | Symbols starting with these names will not be used; `80 cm` will not be shown as `8 dm`.
+minDigitsForSeparation | 5 | The minimum number of digits before group separation occurs; `1234` vs `12 345`.
 

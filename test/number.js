@@ -138,7 +138,12 @@ describe('Number formatting', () =>{
 
     it('should show powers of 10', () => {
         SI.format(1000, { powersOf10: true}).should.equal('10³');
-        SI.format(1000, { powersOf10: false}).should.equal('1 000');
+        SI.format(1000, { powersOf10: false}).should.equal('1000');
+    });
+
+    it('should only group digits when the mininum number of digits is present', () => {
+        SI.format(1234).should.equal('1234');
+        SI.format(1234, { minDigitsForSeparation: 4}).should.equal('1 234');
     });
 
 });
