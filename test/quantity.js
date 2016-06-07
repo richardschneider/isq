@@ -93,7 +93,7 @@ describe('Quantity', () => {
 
     });
 
-    describe('as a string', () => {
+    describe('formatting', () => {
         it('should be parseable', () => {
             let entropy0 = new Quantity('10 J/K');
             let entropy1 = new Quantity(entropy0.toString());
@@ -110,6 +110,11 @@ describe('Quantity', () => {
             let pascalSecond = new Quantity('m⁻¹ kg s⁻¹');
             pascalSecond.toString().should.equal('1 Pa s');
             new Quantity('1 Pa s').toString().should.equal('1 Pa s');
+        });
+
+        it('should ignore some prefixes', () => {
+            new Quantity('80 cm').toString().should.equal('80 cm');  // not '8 dm'
+            new Quantity('800 cm').toString().should.equal('1 m');
         });
     });
 
