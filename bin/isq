@@ -31,7 +31,7 @@ if (program.number != 'js' && program.number != 'javascript')
     isq.config.Number = require(program.number);
 
 if (program.use)
-    isq.use(program.use)
+    isq.use(program.use);
     
 let expr = program.args.join(' '),
     options = {
