@@ -29,6 +29,22 @@ let isq = function createQuantity(s) {
     return new config.Quantity(s);
 };
 
+/**
+ * Use the units from another measurement system.
+ */
+isq.use = function(system) {
+    require('./lib/def/' + system).forEach(def => {
+        this.units.add(def, {prefixes: false});
+    });
+};
+
+/**
+ * Remove the units from another measurement system.
+ */
+isq.unuse = function(system) { // TODO
+    console.log('unuse("' + system + '") is not yet implemented');
+};
+
 isq.Number = createNumber;
 isq.config = config;
 isq.isUncertain = isUncertain;
