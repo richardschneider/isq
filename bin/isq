@@ -18,6 +18,7 @@ program
     .description('SI quantities')
     .option('-b, --base', 'output in SI base units')
     .option('--to <unit>', 'convert to another unit')
+    .option('--use <system>', 'use another measurement system')
     .option('--number <package>', 'the number [package] to use. Defaults to "big.js". "js" will use standard javascript numbers.', 'big.js')
 ;
 
@@ -29,6 +30,9 @@ if (!program.args.length)
 if (program.number != 'js' && program.number != 'javascript')
     isq.config.Number = require(program.number);
 
+if (program.use)
+    isq.use(program.use)
+    
 let expr = program.args.join(' '),
     options = {
         bestSymbol: !program.base
