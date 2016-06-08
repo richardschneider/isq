@@ -6,17 +6,17 @@ According to [NIST](http://physics.nist.gov/cgi-bin/cuu/Value?mn), the mass of a
 
 An [uncertain number](api/UncertainNumber) has a [value](api/UncertainNumber#value) and an [uncertainty](api/UncertainNumber#uncertainty). It can be created in the following ways:
 
-    let mn = SI.Quantity('1.674 927 471(21) × 10⁻²⁷ kg')
-    let mn = SI.Quantity('1.674 927 471(21) * 10^-27 kg')
-    let mn = SI.unit.kg.times(SI.Number(1.674927471e-27, 0.000000021e-27))
+    let mn = isq('1.674 927 471(21) × 10⁻²⁷ kg')
+    let mn = isq('1.674 927 471(21) * 10^-27 kg')
+    let mn = isq.unit.kg.times(isq.Number(1.674927471e-27, 0.000000021e-27))
 
 ### Propagation
 
 Anytime a [calculation](math) is performed, *propagation of uncertainity* is also performed to determine the [uncertainty](api/UncertainNumber#uncertainty) of the result.
 
-    let a = SI.Number('1.2(2)'),   // 1.2±0.2
-        b = SI.Number('1.3(3)'),   // 1.3±0.3
-        length = a.plus(b);        // 2.5±0.4
+    let a = isq('1.2(2) cm'),       // 1.2±0.2 cm
+        b = isq('1.3(3) cm'),       // 1.3±0.3 cm
+        length = a.plus(b);         // 2.5±0.4 cm
 
 
 ### Comparision

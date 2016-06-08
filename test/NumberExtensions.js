@@ -1,12 +1,12 @@
 'use strict';
 
 let should = require('should'),
-    SI = require('..');
+    isq = require('..');
 
 describe('Number', () => {
     it('should be exact and not be uncertain', () => {
-        SI.isUncertain(123).should.be.false;
-        SI.isUncertain(123.45).should.be.false;
+        isq.isUncertain(123).should.be.false;
+        isq.isUncertain(123.45).should.be.false;
     });
 
     it('should allow named mathmatical operators', () => {

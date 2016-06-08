@@ -1,6 +1,6 @@
-Options for formatting and parsing are available `SI.config.options`.  You can modify these properties directly, but making global changes is consider bad form.  It's better to simply override when parsing/formatting, such as 
+Options for formatting and parsing are available `isq.config.options`.  You can modify these properties directly, but making global changes is consider bad form.  It's better to simply override when parsing/formatting, such as 
 
-    SI.Quantity('.5 km', { leadingDigit: false})
+    isq('.5 km', { leadingDigit: false})
     
 ### Parsing options
 

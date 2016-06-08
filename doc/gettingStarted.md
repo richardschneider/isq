@@ -20,17 +20,17 @@ The [big.js](https://www.npmjs.com/package/big.js) package is recommended for ar
 Get the packages
 
     > node
-    SI = require('isq')
-    SI.config.Number = require('big.js')
+    isq = require('isq')
+    isq.config.Number = require('big.js')
 
 
 Determine the length of a line when the starting and ending points are uncertain.
 
-    let a = SI.Quantity('1.2(2) cm'),   // 1.2±0.2 cm
-        b = SI.Quantity('1.3(3) cm'),   // 1.3±0.3 cm
-        length = a.plus(b);             // 2.5±0.4 cm
+    let a = isq('1.2(2) cm'),       // 1.2±0.2 cm
+        b = isq('1.3(3) cm'),       // 1.3±0.3 cm
+        length = a.plus(b);         // 2.5±0.4 cm
 
 Convert to another unit
 
-    let speed = SI.Quantity('25 m/s'),  // 25 m s⁻¹
-        kph = speed.to('km/h');         // 90
+    let speed = isq('25 m/s'),      // 25 m s⁻¹
+        kph = speed.to('km/h');     // 90

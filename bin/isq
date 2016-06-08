@@ -10,7 +10,7 @@
 'use strict';
 
 let program = require('commander'),
-    SI = require('../.');
+    isq = require('../.');
 
 program
     .version(require('../package.json').version)
@@ -27,13 +27,13 @@ if (!program.args.length)
 	return program.help();
 
 if (program.number != 'js' && program.number != 'javascript')
-    SI.config.Number = require(program.number);
+    isq.config.Number = require(program.number);
 
 let expr = program.args.join(' '),
     options = {
         bestSymbol: !program.base
     },
-    q = SI.Quantity(expr, options),
+    q = isq(expr, options),
     result = q;
 
 if (program.to) {

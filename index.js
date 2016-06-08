@@ -21,23 +21,23 @@ function createNumber() {
     return NaN;
 }
 
-function createQuantity(s) {
-    return new config.Quantity(s);
-}
-
 function isUncertain(v) {
     return (v.uncertainty || 0).ne(0);
 }
 
-module.exports = {
-    Number: createNumber,
-    Quantity: createQuantity,
-    config: config,
-    isUncertain: isUncertain,
-    get units() {
+let isq = function createQuantity(s) {
+    return new config.Quantity(s);
+};
+
+isq.Number = createNumber;
+isq.config = config;
+isq.isUncertain = isUncertain;
+Object.defineProperty(isq, "units", {
+    get: function () {
         if (typeof this._units === 'undefined')
             this._units = config.Quantity.units;
         return this._units;
-    },
+    }
+});
 
-};
+module.exports = isq;

@@ -10,12 +10,12 @@ The latest documentation can be read at [Read the Docs](http://isq.readthedocs.o
 
 ### Features
 
-* Uncertainty - `SI.Quantity('123.456(4) km')`
-* SI notation - `SI.Quantity('1.234 56(4) × 10² km')`
-* ASCII notation - `SI.Quantity('1.234 56(4) x 10^2 km')`
-* Conversion - `SI.Quantity('25 m/s').to('km/h')`
-* Symbolic expressions - `SI.Quantity('W/(m² sr)')`
-* Pluggable - `SI.config.Number = require('big.js')`
+* Uncertainty - `isq('123.456(4) km')`
+* SI notation - `isq('1.234 56(4) × 10² km')`
+* ASCII notation - `isq('1.234 56(4) x 10^2 km')`
+* Conversion - `isq('25 m/s').to('km/h')`
+* Symbolic expressions - `isq('W/(m² sr)')`
+* Pluggable - `isq.config.Number = require('big.js')`
 
 ## Getting started
 
@@ -27,46 +27,52 @@ Install with [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 
 Include the package
 
-    var SI = require('isq')
+    var isq = require('isq')
 
-Create a number with [SI.Number](http://isq.rtfd.io/en/latest/api/SI#Number)
+Create a quantity with the function returned by the [isq module](http://isq.rtfd.io/en/latest/api/isq)
 
-    var a = SI.Number(0.3),
-        b = SI.Number('0.1'),
-        c = SI.Number('0.03(1)'), // 0.03±0.01
-        d = SI.Number(0.03, 0.01); // same as c
-
-Create a quantity with [SI.Quantity](http://isq.rtfd.io/en/latest/api/SI#Quantity) with an optional number and a unit
-
-    var a = SI.Quantity('1.03 kg'),
-        b = SI.Quantity('1.03(1) kg') // 1.03±0.01 kg
-        kg = SI.Quantity('kg'); // 1 kg
+    var a = isq('1.03 kg'),
+        b = isq('1.03(1) kg') // 1.03±0.01 kg
+        kg = isq('kg'); // 1 kg
         
 A Quantity is converted to a string with the [toString()](http://isq.rtfd.io/en/latest/api/Quantity#toString) method.  It uses a heuristic to determine the best symbol to use.
 
-    SI.Quantity('5 * 10^-6 s').toString()  // 5 µs
-    SI.Quantity('50 000 V/A').toString()   // 50 kΩ
+    isq('5 * 10^-6 s').toString()  // 5 µs
+    isq('50 000 V/A').toString()   // 50 kΩ
 
 Javascript does not allow overiding of operators, so [named methods](http://isq.readthedocs.io/en/latest/math) are used.  The methods are also chainable.  For example, the hypotenuse of a triangle is
 
-    var a = SI.Quantity('1.2 m'),
-        b = SI.Quantity('80 cm'), // 0.8 m
+    var a = isq('1.2 m'),
+        b = isq('80 cm'), // 0.8 m
         c = a.pow(2).plus(b.pow(2)).sqrt(); // ~ 1.44 m
 
-# Rounding errors
+## Numbers
+
+Create a number with [isq.Number](http://isq.rtfd.io/en/latest/api/SI#Number)
+
+    var a = isq.Number(0.3),
+        b = isq.Number('0.1'),
+        c = isq.Number('0.03(1)'), // 0.03±0.01
+        d = isq.Number(0.03, 0.01); // same as c
+
+It is most likely easier to just create a unitless Quantity, as in:
+
+    var c = isq('0.03(1)');     // 0.03±0.01
+    
+### Rounding errors
 
 Rounding and precision errors are [notorious](http://modernweb.com/2014/02/17/what-every-javascript-developer-should-know-about-floating-points/) in Javascript. For example `0.3 - 0.1` produces `0.19999999999999998` and NOT `0.2`. ISQ can be [configured](http://isq.rtfd.io/en/latest/pluggable) to use a 'big number' package that avoids these issues.
 
-    SI.config.Number = require('big.js');
-    SI.Number(0.3).minus(SI.Number(0.1)) // 0.2
+    isq.config.Number = require('big.js');
+    isq.Number(0.3).minus(isq.Number(0.1)) // 0.2
 
-# Uncertainty
+### Uncertainty
 
 Uncertainity, or margin of error, describes the imperfect nature of a measurement.  Typically, it is the standard deviation of actual measurements. Anytime a calculation is performed, *propagation of uncertainity* is also performed to determine the uncertainty of the result.
 
-    let a = SI.Number('1.2(2)'),   // 1.2±0.2
-        b = SI.Number('1.3(3)'),   // 1.3±0.3
-        length = a.plus(b);        // 2.5±0.4
+    let a = isq('1.2(2) m'),   // 1.2±0.2 m
+        b = isq('1.3(3) m'),   // 1.3±0.3 m
+        length = a.plus(b);    // 2.5±0.4 m
 
 When comparing uncertain numbers, the uncertainity of both values is taken into consideration. Equality *Is the difference of the two values within the resulting uncertainty?* 
 
