@@ -121,6 +121,10 @@ describe('Quantity', () => {
            new Quantity('(5.5 * 1852) m').toString({ system: 'non-SI'}).should.equal('5.5 M');
            new Quantity('(5.5 * 1852) m').toString({ system: 'SI'}).should.equal('10.186 km');
            new Quantity('25 m/s').toString({ system: 'SI'}).should.equal('25 m s⁻¹');
+
+           new Quantity('(5.5 * 1852) m').in('non-SI').should.equal('5.5 M');
+           new Quantity('(5.5 * 1852) m').in('SI').should.equal('10.186 km');
+           new Quantity('25 m/s').in('SI').should.equal('25 m s⁻¹');
         });
 
         it('should throw on undefined measurement system', () => {
