@@ -21,4 +21,4 @@ bestSymbol | `true` | Finds the best symbol to represent the value.  If `false`,
 system | `'SI'` | The measurement system that contains the `bestSymbol`.
 ignoreSymbols | `['deca', 'hecto', 'deci']` | Symbols starting with these names will not be used; `80 cm` will not be shown as `8 dm`.
 minDigitsForSeparation | 5 | The minimum number of digits before group separation occurs; `1234` vs `12 345`.
-
+uncertaintyPrecision | 2 | The maximun number of significant digits for the uncertainty of a number. 

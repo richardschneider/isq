@@ -100,4 +100,14 @@ describe('Uncertain Number', () => {
            new UncertainNumber(10, 1).valueOf().should.equal('10 ± 1');
         });
     });
+
+    describe('formatting', () => {
+        it('should have max precision for uncertainty', () => {
+            let width = new UncertainNumber(1.2, 0.2),
+                height = new UncertainNumber(1.3, 0.3),
+                area = width.times(height);
+            area.toString({uncertaintyPrecision: 1}).should.equal('1.56 ± 0.4');
+            area.toString({uncertaintyPrecision: 2}).should.equal('1.56 ± 0.44');
+        });
+    });
 });
