@@ -71,7 +71,7 @@ describe('Uncertain Number', () => {
             c = 10,
             r = u.dividedBy(c);
         r.value.toNumber().should.equal(12);
-        r.uncertainty.toNumber().should.equal(30);
+        r.uncertainty.toNumber().should.equal(0.3);
     });
 
     it('should raise to power and propagate uncertainty', () => {
