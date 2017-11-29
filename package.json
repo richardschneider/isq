@@ -29,7 +29,7 @@
     "jsep": "https://github.com/richardschneider/jsep/tarball/master"
   },
   "devDependencies": {
-    "ghooks": "^1.2.1",
+    "ghooks": "^2.0.2",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-git": "^1.7.2",
